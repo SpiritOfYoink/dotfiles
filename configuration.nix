@@ -1,4 +1,4 @@
-{ self, nixpkgs, pkgs, config, lib, home-manager, niri, user, fullname, host, password, rootpw, server, github, ... }: {
+{ self, nixpkgs, pkgs, config, lib, specialArgs ... }: {
 
 imports = [    # You can import other NixOS modules here.
   ./modules/home-manager.nix

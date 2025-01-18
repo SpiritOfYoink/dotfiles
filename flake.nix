@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = { self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... } @ inputs:
+  outputs = inputs @ { self, nixpkgs, pkgs, config, lib, specialArgs ... }: rec {
 
   #   ..... VARIABLES .....    
   let
@@ -52,66 +52,24 @@
 
   in {
     nixosConfigurations = {
-      "${host}" = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit user;
-            inherit fullname;
-            inherit host;
-            inherit server;
-            inherit github;
-            inherit system;
-            inherit pkgs;
-            inherit lib;
-            };
-          };
 
       modules = [
-      
-        ./configuration.nix {
-          SpecialArgs = [
-            inherit user;
-            inherit fullname;
-            inherit host;
-            inherit server;
-            inherit github;
-            inherit system;
-            inherit pkgs;
-            inherit lib;
-            ];
-        };
-
+        ./configuration.nix
         ./modules/desktop.nix
-
-        ./modules/home-manager.nix {
-          SpecialArgs = [
-            inherit user;
-            inherit fullname;
-            inherit host;
-            inherit server;
-            inherit github;
-            inherit system;
-            inherit pkgs;
-            inherit lib;
-            ];
-        };
-
-        home-manager.nixosModules {
-          extraSpecialArgs = [
-            inherit user;
-            inherit fullname;
-            inherit host;
-            inherit server;
-            inherit github;
-            inherit system;
-            inherit pkgs;
-            inherit lib;
-            ];
-        };
+        ./modules/home-manager.nix
+        home-manager.nixosModules
         ];
+
+      "${host}" = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit = [ user fullname host server github system pkgs lib ]
+            };
+          };
 
     pkgs = import nixpkgs {
         config.allowUnfree = true;
         config.contentAddressedByDefault = false;
+        };
       };
     };
   };
