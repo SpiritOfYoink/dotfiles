@@ -1,4 +1,4 @@
-{ self, nixpkgs, pkgs, inputs, outputs, config, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }: {
+{ self, nixpkgs, pkgs, config, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }: {
 
 imports = [    # You can import other NixOS modules here.
   ./hardware-configuration.nix
