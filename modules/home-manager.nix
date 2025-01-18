@@ -1,20 +1,5 @@
 { config, pkgs, lib, inputs, outputs, home-manager, niri, ... }: {
 
-#   ..... VARIABLES .....
-
-let {    # Set these values in flakes.nix!
-  user = config.modules.flake.user;
-  fullname = config.modules.flake.fullname;
-  hostname = config.modules.flake.hostname;
-  # password = config.modules.flake.password;
-  # rootpw = config.modules.flake.rootpw;
-  system = config.modules.flake.system;
-  device = config.modules.flake.device;
-  github = config.modules.flake.github;
-  };
-
-in {
-
 #   ..... BOILERPLATE ..... 
 
   programs.home-manager.enable = true;  # Enables home-manager.
@@ -112,5 +97,4 @@ in {
     EDITOR = "vscode"     # Sets the default source-code editor.
     };
 
-  };
 };

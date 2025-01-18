@@ -4,22 +4,6 @@ imports = [
   inputs.niri.nixosModules.niri;   # Niri window manager
   ];
 
-#   ..... VARIABLES .....
-
-let {    # Set these values in flakes.nix!
-  user = config.modules.flake.user;
-  fullname = config.modules.flake.fullname;
-  hostname = config.modules.flake.hostname;
-  # password = config.modules.flake.password;
-  # rootpw = config.modules.flake.rootpw;
-  system = config.modules.flake.system;
-  device = config.modules.flake.device;
-  github = config.modules.flake.github;
-  };
-
-in {
-
-
   #   ..... NIRI - WINDOW MANAGER .....
     #   ..... SETTINGS .....
     niri-flake.cache.enable = true;
@@ -119,11 +103,8 @@ in {
         };    # End of niri.settings 
       };    # End of Niri.
 
-
   #   ..... EWW - TASKBAR AND NOTIFICATIONS .....
 
   #   ..... FUZZEL - PROGRAM LAUNCHER .....
 
-
-  };    # End of file.
 };
