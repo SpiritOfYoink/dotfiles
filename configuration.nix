@@ -25,7 +25,7 @@ imports = [    # You can import other NixOS modules here.
       enable32Bit = true;   # Enables 32-bit drivers for 32-bit applications (such as Wine).
       driSupport = true;    # Enables Vulkan .
       driSupport32Bit = true; 
-      }
+      };
 
     nvidia = {
       open = true;   # Uses the open-source modules (not drivers).
@@ -39,7 +39,7 @@ imports = [    # You can import other NixOS modules here.
       modesetting.enable = true;    # Modesetting is required to run wayland.
       nvidia-persistenced = true;   # Allows the toggling of 'persistence mode' in nvidia management software.
       dynamicBoost.enable = true;   # Allows the GPU clock speed to boost as normal.
-      }
+      };
 
     enableRedistributableFirmware = true;   # Enables firmware with a licence allowing redistribution.
     };
