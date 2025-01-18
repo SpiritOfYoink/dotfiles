@@ -4,9 +4,16 @@ INSTALLATION:
 
 1) Install NixOS (no GUI needed), and run the following terminal commands:
 
-2) sudo sed -i 's/^{$/{\n  programs.git.enable = true;/' /etc/nixos/configuration.nix
+2) cd ~/etc/nixos && sudo nano configuration.nix
 
-    (Pay attention to the double space after the \n.)
+In nano, add the following lines below imports:
+
+    programs.git.enable = true;
+
+    nix = {
+        package = pkgs.nixFlakes;
+        extraOptions = "experimental-features = nix-command flakes";
+        };
 
 3) sudo nixos-rebuild switch
 
