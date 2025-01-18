@@ -6,17 +6,17 @@ INSTALLATION:
 
 2) sed -i 's/^{$/{\n  programs.git.enable = true;/' /etc/nixos/configuration.nix
 
-3) git clone https://github.com/SpiritOfYoink/dotfiles ~/.config/nixos && cd ~/.config/nixos
+3) git clone https://github.com/SpiritOfYoink/dotfiles ~/home/dotfiles && cd ~/home/dotfiles
 
-4) sudo nixos-generate-config
+4) sudo nixos-generate-config --root ~/home/dotfiles
 
-5) sudo nano ~/.config/nixos/dotfiles/modules/variables.nix
+5) sudo nano ~/home/dotfiles/modules/variables.nix
 
 6) Change the variables to appropriate values for your computer.
 
 7) Exit nano with Ctl+X, Y, Enter.
 
-8) sudo nixos-rebuild switch --flake
+8) sudo nixos-rebuild switch --flake ~/home/dotfiles
 
 
 Note: from then on, you simply need to use 'rebuild' to rebuild and switch the system configuration.
