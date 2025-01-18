@@ -97,4 +97,4 @@
     EDITOR = "vscode";     # Sets the default source-code editor.
     };
 
-};
+}

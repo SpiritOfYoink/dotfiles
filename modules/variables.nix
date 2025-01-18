@@ -1,4 +1,4 @@
-    { lib, ... }:
+    { lib, ... }:{
     
     #   ..... VARIABLES .....    
 
@@ -15,3 +15,5 @@
       system = "x86_64-linux";        # This doesn't need to change unless you're using ARM or Apple silicon.
       pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";    # If 'system' changes, change this!
       lib = nixpkgs.lib;
+      
+    }

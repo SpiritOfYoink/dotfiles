@@ -212,4 +212,4 @@ programs = {    # *Most* programs are managed through home-manager. See home-man
 
 #   ..... END .....
 
-}   # Ends file.
+}
