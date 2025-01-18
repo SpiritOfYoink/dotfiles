@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = inputs @ { self, nixpkgs, pkgs, config, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
+  outputs = inputs @ { self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
 
     # Set your values in variables.nix!
 
