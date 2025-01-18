@@ -80,7 +80,7 @@ imports = [    # You can import other NixOS modules here.
   environment.systemPackages = with pkgs; [
     git     # Flakes clones its dependencies through the git command, so this must come first.
     ];
-  };
+
   services.dbus.enable = true; # Allows programs to communciate with each other.
 
   xdg.portal = {    # Gnome Toolkit portal needed to make gtk apps happy.
