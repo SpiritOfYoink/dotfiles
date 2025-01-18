@@ -6,15 +6,15 @@ imports = [
 
 #   ..... VARIABLES .....
 
-let {    # Set these values in variables.nix!
-  user = config.modules.variables.user;
-  fullname = config.modules.variables.fullname;
-  hostname = config.modules.variables.hostname;
-  password = config.modules.variables.password;
-  rootpw = config.modules.variables.rootpw;
-  system = config.modules.variables.system;
-  device = config.modules.variables.device;
-  github = config.modules.variables.github;
+let {    # Set these values in flakes.nix!
+  user = config.modules.flake.user;
+  fullname = config.modules.flake.fullname;
+  hostname = config.modules.flake.hostname;
+  # password = config.modules.flake.password;
+  # rootpw = config.modules.flake.rootpw;
+  system = config.modules.flake.system;
+  device = config.modules.flake.device;
+  github = config.modules.flake.github;
   };
 
 in {
@@ -22,7 +22,7 @@ in {
   #   ..... GNOME DISPLAY MANAGER - LOGIN .....
     services = {
       xserver = {   # Terrible name, but services.xserver is used for GUI-related commands.
-        layout = "us" 
+        layout = "us"
         enable = true
         };
       displayManager = {

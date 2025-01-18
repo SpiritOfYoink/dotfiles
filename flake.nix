@@ -31,7 +31,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = @ inputs: { self, nixpkgs, config, pkgs, lib, inputs, outputs, home-manager, niri, ... } 
+  outputs = @ inputs: { self, nixpkgs, config, pkgs, lib, inputs, outputs, home-manager, niri, ... }
 
     #   ..... VARIABLES .....    
     let {
@@ -52,7 +52,7 @@
 
 
     in {
-      nixosConfigurations.config.modules.variables.hostname = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.config.modules = nixpkgs.lib.nixosSystem {
         SpecialArgs = {inherit inputs; }; # Sends flake.nix's inputs to every nix module.
         modules = [
           ./configuration.nix;
