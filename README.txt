@@ -4,7 +4,7 @@ INSTALLATION:
 
 1) Install NixOS (no GUI needed), and run the following terminal commands:
 
-2) sed -i 's/^{$/{\n  programs.git.enable = true;/' /etc/nixos/configuration.nix
+2) sed -i 's/^{$/{\n  programs.git.enable = true;/g' /etc/nixos/configuration.nix
 
 3) git clone https://github.com/SpiritOfYoink/dotfiles ~/home/dotfiles && cd ~/home/dotfiles
 
