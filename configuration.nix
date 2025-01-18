@@ -7,23 +7,6 @@ imports = [    # You can import other NixOS modules here.
     ./modules/variables.nix
     ];
 
-
-#   ..... VARIABLES .....
-
-let {    # Set these values in flakes.nix!
-  user = config.modules.flake.user;
-  fullname = config.modules.flake.fullname;
-  hostname = config.modules.flake.hostname;
-  # password = config.modules.flake.password;
-  # rootpw = config.modules.flake.rootpw;
-  system = config.modules.flake.system;
-  device = config.modules.flake.device;
-  github = config.modules.flake.github;
-  };
-
-in {
-
-
 #   ..... BOOT SETTINGS .....
 
     boot.loader.systemd-boot.enable = true;       # Enables bootloader. DO NOT TOUCH.
@@ -233,5 +216,4 @@ in {
 
 #   ..... END .....
 
-  };    # Ends "Let-In" variables.
 }   # Ends file.
