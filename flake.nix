@@ -52,6 +52,7 @@
 
   in {
     nixosConfigurations = {
+      "${host}" = nixpkgs.lib.nixosSystem {
           specialArgs.inherit = [
             user
             fullname
@@ -65,6 +66,7 @@
           };
 
       modules = [
+      
         ./configuration.nix {
           SpecialArgs.inherit = [
             user
