@@ -32,8 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs= { self, nixpkgs, pkgs, config, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:
-
+  outputs= { self, nixpkgs, pkgs, config, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
 
     # Set your values in variables.nix!
 
@@ -66,33 +65,34 @@
 
       };
 
-      nixpkgs.config.allowUnfree = true;        # Allows unfree packages.
+    nixpkgs.config.allowUnfree = true;        # Allows unfree packages.
 
-      modules = [
-        ./configuration.nix;
-        ./modules/desktop.nix;
-        ./modules/home-manager.nix;
-        ../../etc/nixos/hardware-configuration.nix
-        inputs.home-manager.nixosModules.default;    # Pulls in the default home-manager module?
-        ];
+    modules = [
+      ./configuration.nix;
+      ./modules/desktop.nix;
+      ./modules/home-manager.nix;
+      ../../etc/nixos/hardware-configuration.nix
+      inputs.home-manager.nixosModules.default;    # Pulls in the default home-manager module?
+      ];
 
-      overlays = [
-        nixgl.overlay;   # You can now reference pkgs.nixgl.nixGLIntel, etc.
-        ];
+    overlays = [
+      nixgl.overlay;   # You can now reference pkgs.nixgl.nixGLIntel, etc.
+      ];
 
-      home-manager = {    # Configuration for home-manager.
-        enable = true;
-        ExtraSpecialArgs = { inherit inputs; };   # Sends flake.nix's inputs to every home manager module.
-        users.${user} = {
-          imports = [
-            eww.homeManagerModules.${system}.default    # Imports ElKowar's Wacky Widgets, used for taskbar and notifications.
-            inputs.nix-colors.homeManagerModules.default    # Imports nix-colors, a comprehensive style selector.
-            ];
-          backupFileExtension = "backup";
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          };
+    home-manager = {    # Configuration for home-manager.
+      enable = true;
+      ExtraSpecialArgs = { inherit inputs; };   # Sends flake.nix's inputs to every home manager module.
+      users.${user} = {
+        imports = [
+          eww.homeManagerModules.${system}.default    # Imports ElKowar's Wacky Widgets, used for taskbar and notifications.
+          inputs.nix-colors.homeManagerModules.default    # Imports nix-colors, a comprehensive style selector.
+          ];
+        backupFileExtension = "backup";
+        useGlobalPkgs = true;
+        useUserPackages = true;
         };
+      };
+    };
 };
 
 
