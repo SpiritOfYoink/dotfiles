@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = inputs: { self, nixpkgs, config, pkgs, lib, inputs, outputs, home-manager, niri, ... }{
+  outputs= { self, nixpkgs, config, pkgs, lib, inputs, outputs, home-manager, niri, ... }:
 
     #   ..... VARIABLES .....    
     let {
@@ -49,8 +49,6 @@
       system = "x86_64-linux";        # This doesn't need to change unless you're using ARM or Apple silicon.
       pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";    # If 'system' changes, change this!
       lib = nixpkgs.lib;
-      };
-
 
     in {
       nixosConfigurations.config.modules = nixpkgs.lib.nixosSystem {
@@ -80,7 +78,7 @@
             useUserPackages = true;
             };
           };
-    };
+        };
   };
 };
 
