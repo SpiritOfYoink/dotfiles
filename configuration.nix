@@ -7,11 +7,14 @@ imports = [    # You can import other NixOS modules here.
   ];
 
 #   ..... BOOT SETTINGS .....
-
-  boot.loader.systemd-boot.enable = true;       # Enables bootloader. DO NOT TOUCH.
-  boot.loader.efi.canTouchEfiVariables = true;        # Allows bootloader to manage boot entries. DO NOT TOUCH.
-  boot.loader.systemd-boot.configurationLimit = 10;        # Limits the number of previous configurations stored in the bootloader. Increase if you may need to go further back in time.
-  boot.blacklistedKernelModules=["nouveau"];    # Prevents the open-source drivers from loading.
+  boot = { 
+    loader = {
+      systemd-boot.enable = true;       # Enables bootloader. DO NOT TOUCH.
+      efi.canTouchEfiVariables = true;        # Allows bootloader to manage boot entries. DO NOT TOUCH.
+      systemd-boot.configurationLimit = 10;        # Limits the number of previous configurations stored in the bootloader. Increase if you may need to go further back in time.
+      };
+    blacklistedKernelModules=["nouveau"];    # Prevents the open-source drivers from loading.
+    };
 
 
 #   ..... DRIVERS & HARDWARE SUPPORT.....
@@ -45,15 +48,19 @@ imports = [    # You can import other NixOS modules here.
   services = {
     xserver = {   # Terrible name, but services.xserver is used for GUI-related commands.
       enable = true;
-      layout = "us";
-      videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
+      desktopManager.gnome.enable = true;
       displayManager = {
         gdm.enable = true;
+        gdm.wayland = true;
+        gdm.settings.greeter.IncludeAll = true;
+        sessionPackages = [ pkgs.niri ] 
         autoLogin = {
           enable = true;
           user = ${user}; # Currently not accepting variables?
           };
+      videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
       defaultSession = "niri";
+      libinput.enable = true; 
         };
       };
     };
