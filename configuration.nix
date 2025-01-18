@@ -75,7 +75,10 @@ in {
 
 #   ..... SYSTEM CONFIG .....
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];  # Enable the Flakes versioning system.
+    nix.settings.experimental-features = [
+      "nix-command"   # Enable the 'nix' terminal command.
+      "flakes"  # Enable the Flakes versioning system.
+      ];
       environment.systemPackages = with pkgs; [
       git     # Flakes clones its dependencies through the git command, so this must come first.
       ];
