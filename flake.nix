@@ -5,6 +5,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";       # Nixpkgs.
+    nix.package = pkgs.nixVersions.latest   # Prevents NixOS from throwing an error about nixVersions.unstable
     
     home-manager.url = "github:nix-community/home-manager";    # Home manager.
     home-manager.inputs.nixpkgs.follows = "nixpkgs";

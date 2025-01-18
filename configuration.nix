@@ -74,14 +74,19 @@ imports = [    # You can import other NixOS modules here.
 
 #   ..... SYSTEM CONFIG .....
 
-  nix.settings.experimental-features = [
-    "nix-command"   # Enable the 'nix' terminal command.
-    "flakes"  # Enable the Flakes versioning system.
-    ];
-    environment.systemPackages = with pkgs; [
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
+    settings = {
+      experimental-features = [
+        "nix-command"   # Enable the 'nix' terminal command.
+        "flakes"  # Enable the Flakes versioning system.
+        ];
+      };
+  environment.systemPackages = with pkgs; [
     git     # Flakes clones its dependencies through the git command, so this must come first.
     ];
-
+  };
   services.dbus.enable = true; # Allows programs to communciate with each other.
 
   xdg.portal = {    # Gnome Toolkit portal needed to make gtk apps happy.
