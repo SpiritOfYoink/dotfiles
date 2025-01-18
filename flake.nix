@@ -5,7 +5,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";       # Nixpkgs.
-    nix.package = pkgs.nixVersions.latest   # Prevents NixOS from throwing an error about nixVersions.unstable
+    nix.package = pkgs.nixVersions.latest;   # Prevents NixOS from throwing an error about nixVersions.unstable
     
     home-manager.url = "github:nix-community/home-manager";    # Home manager.
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = @ inputs: { self, nixpkgs, config, pkgs, lib, inputs, outputs, home-manager, niri, ... }
+  outputs = @ inputs: { self, nixpkgs, config, pkgs, lib, inputs, outputs, home-manager, niri, ... }{
 
     #   ..... VARIABLES .....    
     let {
@@ -43,12 +43,12 @@
       #password = mkOption {};        # What is the user's secret file?
       #rootpw = mkOption {};      # What is the root user's secret file?
 
-      device = "//192.168.1.70/NAS_Storage";      # Where's your network storage attached? (SMB share.)
-      github = "github:SpiritOfYoink/dotfiles"       # Change this to the github link for your repository.
+      server = "//192.168.1.70/NAS_Storage";      # Where's your network storage attached? (SMB share.)
+      github = "github:SpiritOfYoink/dotfiles";       # Change this to the github link for your repository.
 
       system = "x86_64-linux";        # This doesn't need to change unless you're using ARM or Apple silicon.
       pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";    # If 'system' changes, change this!
-      lib = nixpkgs.lib
+      lib = nixpkgs.lib;
       };
 
 
@@ -59,7 +59,6 @@
           ./configuration.nix;
           ./modules/desktop.nix;
           ./modules/home-manager.nix;
-          ./moduels/variables.nix
           inputs.home-manager.nixosModules.default;    # Pulls in the default home-manager module?
           ];
 
@@ -82,6 +81,7 @@
             };
           };
     };
+  };
 };
 
 

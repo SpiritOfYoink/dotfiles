@@ -42,14 +42,14 @@ imports = [    # You can import other NixOS modules here.
   #   ..... GNOME DISPLAY MANAGER - LOGIN .....
   services = {
     xserver = {   # Terrible name, but services.xserver is used for GUI-related commands.
-      enable = true
-      layout = "us"
+      enable = true;
+      layout = "us";
       videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
       displayManager = {
-        gdm.enable = true
+        gdm.enable = true;
         autoLogin = {
-          enable = true
-          user = ${user} # Currently not accepting variables?
+          enable = true;
+          user = ${user}; # Currently not accepting variables?
           };
       defaultSession = "niri";
         };
@@ -90,8 +90,8 @@ imports = [    # You can import other NixOS modules here.
   services.dbus.enable = true; # Allows programs to communciate with each other.
 
   xdg.portal = {    # Gnome Toolkit portal needed to make gtk apps happy.
-    enable = true
-    wlr.enable = true
+    enable = true;
+    wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
@@ -117,15 +117,6 @@ imports = [    # You can import other NixOS modules here.
       LC_TIME = "en_US.UTF-8";
       };
 
-  services.xserver = {    # Sets keyboard region and layout.
-    layout = "US";
-    xkbVariant = "";
-    };
-
-  services.logind.extraConfig = ''*;
-  HandlePowerKey=poweroff;
-  '';      # Makes the power button shut down the computer.
-
   nix.gc {    # Enables garbage collection.
     automatic = true;
     dates = "weekly";
@@ -141,7 +132,7 @@ imports = [    # You can import other NixOS modules here.
 #   ..... NETWORKED STORAGE .....
 
   fileSystems."/mnt/nas-storage" = {    # Accesses network-attached storage.
-    device = ${device};
+    device = ${server};
     fsType = "cifs";
     options = [
       let
@@ -183,13 +174,13 @@ imports = [    # You can import other NixOS modules here.
 services.adguardhome = {    #  --  Adguard ad blocker.
   enable = true;
 
-  user =    # This information should come from my secrets file?
-  password =
+  #user =    # This information should come from my secrets file?
+  #password =
 
   openFirewall = true;
   settings = {    # Pull settings from the .config file for Adguard.
     bind_port = 8000;
-    theme = dark
+    theme = dark;
     dns.upstream_dns = [
       "9.9.9.9#dns.quad9.net"   # Filters malicious actors, and keeps zero IP logs.
       "149.112.112.112#dns.quad9.net"
