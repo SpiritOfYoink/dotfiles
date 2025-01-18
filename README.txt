@@ -4,11 +4,15 @@ INSTALLATION:
 
 1) Install NixOS (no GUI needed), and run the following terminal commands:
 
-2) sudo sed -i 's/^{$/{\n  programs.git.enable = true;/' /etc/nixos/configuration.nix       (Pay attention to the double space after the \n.)
+2) sudo sed -i 's/^{$/{\n  programs.git.enable = true;/' /etc/nixos/configuration.nix
+
+    (Pay attention to the double space after the \n.)
 
 3) sudo nixos-rebuild switch
 
 4) sudo git clone https://github.com/SpiritOfYoink/dotfiles ~/home/dotfiles && cd ~/home/dotfiles
+
+    This will prompt you to login to GitHub.
 
 5) sudo nixos-generate-config --root ~/home/dotfiles
 
