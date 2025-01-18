@@ -10,15 +10,13 @@ INSTALLATION:
 
 3) sudo nixos-rebuild switch
 
-4) sudo git clone https://github.com/SpiritOfYoink/dotfiles ~/home/dotfiles && cd ~/home/dotfiles
-
-    This will prompt you to login to GitHub.
+4) git clone https://github.com/SpiritOfYoink/dotfiles ~/home/dotfiles && cd ~/home/dotfiles
 
 5) sudo nixos-generate-config --root ~/home/dotfiles
 
-6) sudo nano ~/home/dotfiles/modules/variables.nix
+6) sudo nano ~/home/dotfiles/flake.nix
 
-7) Change the variables to appropriate values for your computer.
+7) Change the variables (under the VARIABLES header) to appropriate values for your computer.
 
 8) Exit nano with Ctl+X, Y, Enter.
 

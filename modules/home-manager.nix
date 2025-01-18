@@ -45,9 +45,6 @@ in {
   home.packages = with pkgs; [  # The home.packages option allows you to install Nix packages into your environment.
 
     eww   # ElKowar's Wacky Widgets, used for taskbar and notifications.
-
-
-    inputs.ghostty.packages."${system}.default"   # Terminal.
     bitwarden-desktop   # Password Manager.
     java    # Language required for some Steam games.
     wget    # Web server file retrieval.
@@ -101,7 +98,11 @@ in {
       userName = "thespiritofyoink@gmail.com";
       userEmail = "thespiritofyoink@gmail.com";
       };
-
+    
+    ghostty = {   # Terminal.
+      enable = true;
+      };
+      
     };
   
   home.file = {   # Home Manager is pretty good at managing dotfiles. The primary way to manage plain files is through 'home.file'.
