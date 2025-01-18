@@ -3,7 +3,7 @@
 
 #   ..... INPUTS .....
 
-  inputs = {self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
+  inputs = { self, nixpkgs, pkgs, config, lib, specialArgs, ... }:{
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";       # Nixpkgs.
     # nix.package = pkgs.nixVersions.latest;   # Prevents NixOS from throwing an error about nixVersions.unstable
     
