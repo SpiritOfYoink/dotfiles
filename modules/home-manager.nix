@@ -1,4 +1,4 @@
-{ self, nixpkgs, specialArgs ...  }: {
+{ self, nixpkgs, attrs ...  }: {
 
 #   ..... BOILERPLATE ..... 
 

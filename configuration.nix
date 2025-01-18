@@ -1,4 +1,4 @@
-{ self, nixpkgs, specialArgs, ... }: {
+{ self, nixpkgs, attrs, ... }: {
 
 imports = [    # You can import other NixOS modules here.
   ./modules/home-manager.nix

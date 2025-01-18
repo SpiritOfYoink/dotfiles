@@ -8,7 +8,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = inputs@{ self, nixpkgs, specialArgs, ... }:
+  outputs = { self, nixpkgs, specialArgs, ... }@attrs: {
 
   #   ..... VARIABLES .....    
   let
@@ -28,23 +28,23 @@
   in {
       nixosConfigurations = {
 
-        modules = [
-          ./configuration.nix
-          ./modules/desktop.nix
-          ./modules/home-manager.nix
-          ];
-
         "${host}" = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit user fullname host server github pkgs lib; };
-            home-manager.ExtraSpecialArgs = { inherit user fullname host server github pkgs lib; };
+            specialArgs = attrs;
+            ExtraSpecialArgs = attrs;
+            modules = [
+              ./configuration.nix
+              ./modules/desktop.nix
+              ./modules/home-manager.nix
+              ];
             };
-
+          
       pkgs = import nixpkgs {
           config.allowUnfree = true;
           config.contentAddressedByDefault = false;
           };
         };
       };
+  };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";       # Nixpkgs.
