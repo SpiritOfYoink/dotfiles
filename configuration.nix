@@ -1,7 +1,6 @@
-{ self, nixpkgs, pkgs, config, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }: {
+{ self, nixpkgs, pkgs, config, lib, home-manager, niri, user, fullname, host, password, rootpw, server, github, ... }: {
 
 imports = [    # You can import other NixOS modules here.
-  ./variables.nix
   ./modules/home-manager.nix
   ./modules/desktop.nix
   ../../etc/nixos/hardware-configuration.nix
@@ -151,7 +150,7 @@ imports = [    # You can import other NixOS modules here.
 
 #   ..... USER SETUP .....
 
-  networking.hostName = ${hostname};    # What the computer is called on your network.
+  networking.hostName = ${host};    # What the computer is called on your network.
 
   users.users.${user} = {   # Defines the user account.
       isNormalUser = true;

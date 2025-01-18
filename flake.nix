@@ -34,32 +34,78 @@
 
   outputs = { self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... } @ inputs:
 
-    modules = [
-      ./configuration.nix
-      ./variables.nix
-      ./modules/desktop.nix
-      ./modules/home-manager.nix
-      ../../etc/nixos/hardware-configuration.nix
-      inputs.home-manager.nixosModules.default    # Pulls in the default home-manager module?
-      ];
+  #   ..... VARIABLES .....    
+  let
+    user = "yoink";     # What's your login?
+    fullname = "The Spirit of Yoink!";      # What's the user called?
+    host = "Ncase M2";      # What's the computer called?
 
+    #password = ;        # What is the user's secret file?
+    #rootpw = ;      # What is the root user's secret file?
 
-    # Set your values in variables.nix!
+    server = "//192.168.1.70/NAS_Storage";      # Where's your network storage attached? (SMB share.)
+    github = "https://github.com/SpiritOfYoink/dotfiles";       # Change this to the github link for your repository.
 
-    variables.nix = {
-      specialArgs = {inherit inputs; }; # Sends flake.nix's inputs to every nix module.
-      ExtraSpecialArgs = { inherit inputs; };   # Sends flake.nix's inputs to every home manager module.
-      user = "user";
-      fullname = "fullname";
-      hostname = "hostname";
-      server = "server";
-      github = "github";
-      system = "system";
-      pkgs = inputs.nixpkgs.legacyPackages."system";
-      lib = nixpkgs.lib;
-      #password = "password";
-      #rootpw = "rootpw";
-      };
+    system = "x86_64-linux";        # This doesn't need to change unless you're using ARM or Apple silicon.
+    pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";    # If 'system' changes, change this!
+    lib = nixpkgs.lib;
+
+  in {
+    nixosConfigurations = {
+          specialArgs.inherit = [
+            user
+            fullname
+            host
+            server
+            github
+            system
+            pkgs
+            lib
+            ];
+          };
+
+      modules = [
+        ./configuration.nix {
+          SpecialArgs.inherit = [
+            user
+            fullname
+            host
+            server
+            github
+            system
+            pkgs
+            lib
+            ];
+        };
+
+        ./modules/desktop.nix
+
+        ./modules/home-manager.nix {
+          SpecialArgs.inherit = [
+            user
+            fullname
+            host
+            server
+            github
+            system
+            pkgs
+            lib
+            ];
+          };
+
+        home-manager.nixosModules {
+          extraSpecialArgs.inherit = [
+            user
+            fullname
+            host
+            server
+            github
+            system
+            pkgs
+            lib
+            ];
+          };
+        ];
 
     pkgs = import nixpkgs {
         config.allowUnfree = true;
@@ -75,4 +121,5 @@
         useUserPackages = true;
         };
       };
+    };
 }
