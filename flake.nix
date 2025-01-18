@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = { self, nixpkgs, pkgs, config, lib, specialArgs, ... }: rec {
+  outputs = inputs@{ self, nixpkgs, pkgs, config, lib, specialArgs, ... }:
 
   #   ..... VARIABLES .....    
   let
@@ -46,7 +46,6 @@
     server = "//192.168.1.70/NAS_Storage";      # Where's your network storage attached? (SMB share.)
     github = "https://github.com/SpiritOfYoink/dotfiles";       # Change this to the github link for your repository.
 
-    system = "x86_64-linux";        # This doesn't need to change unless you're using ARM or Apple silicon.
     pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";    # If 'system' changes, change this!
     lib = nixpkgs.lib;    # No need to change this.
 
@@ -62,6 +61,8 @@
 
         "${host}" = nixpkgs.lib.nixosSystem {
             specialArgs = {
+              inherit = [ user fullname host server github system pkgs lib ]
+            ExtraSpecialArgs = {
               inherit = [ user fullname host server github system pkgs lib ]
               };
             };
