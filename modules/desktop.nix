@@ -19,22 +19,6 @@ let {    # Set these values in flakes.nix!
 
 in {
 
-    #   ..... GNOME DISPLAY MANAGER - LOGIN .....
-    services = {
-      xserver = {   # Terrible name, but services.xserver is used for GUI-related commands.
-        layout = "us"
-        enable = true
-        videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
-        };
-      displayManager = {
-        gdm.enable = true
-        autoLogin = {
-          enable = true
-          user = ${user} # Currently not accepting variables?
-          };
-        defaultSession = "niri";
-        };
-      };
 
   #   ..... NIRI - WINDOW MANAGER .....
     #   ..... SETTINGS .....

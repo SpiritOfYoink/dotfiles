@@ -57,21 +57,22 @@ in {
       };
 
     #   ..... GNOME DISPLAY MANAGER - LOGIN .....
-#    services = {
-#      xserver = {   # Terrible name, but services.xserver is used for GUI-related commands.
-#        layout = "us"
-#        enable = true
-#        videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
-#        };
-#      displayManager = {
-#        gdm.enable = true
-#        autoLogin = {
-#          enable = true
-#          user = ${user} # Currently not accepting variables?
-#          };
-#        defaultSession = "niri";
-#        };
-#      };
+    services = {
+      xserver = {   # Terrible name, but services.xserver is used for GUI-related commands.
+        layout = "us"
+        enable = true
+        videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
+        };
+      displayManager = {
+        gdm.enable = true
+        autoLogin = {
+          enable = true
+          user = ${user} # Currently not accepting variables?
+          };
+        defaultSession = "niri";
+        };
+      };
+
 
     hardware.bluetooth.enable = true;       # Enables support for Bluetooth.
     hardware.bluetooth.powerOnBoot = true;      # Powers up the default Bluetooth controller on boot.
