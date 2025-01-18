@@ -77,7 +77,7 @@ imports = [    # You can import other NixOS modules here.
 #   ..... SYSTEM CONFIG .....
 
   nix = {
-    settings.experimental-features =  [ "nix-command" "flakes"];    # Enables the Flakes update system command in conjunction with a rebuild.
+    settings.experimental-features = "nix-command flakes";    # Enables the Flakes update system command in conjunction with a rebuild.
     checkConfig = true;
     checkAllErrors = true; 
     };

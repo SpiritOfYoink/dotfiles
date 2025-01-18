@@ -9,7 +9,7 @@ INSTALLATION:
 3) In nano, add the following lines below imports:
 
     programs.git.enable = true;
-    nix.settings.experimental-features = [ "nix-command" "flakes"];
+    nix.settings.experimental-features = "nix-command flakes";
 
 4) Exit nano with Ctl+X, Y, Enter.
 
