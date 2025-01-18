@@ -59,8 +59,8 @@
           ];
 
         "${host}" = nixpkgs.lib.nixosSystem {
-            specialArgs = inherit user fullname host server github pkgs lib;
-            home-manager.ExtraSpecialArgs = inherit user fullname host server github pkgs lib;
+            specialArgs = { inherit user fullname host server github pkgs lib; };
+            home-manager.ExtraSpecialArgs = { inherit user fullname host server github pkgs lib; };
             };
 
       pkgs = import nixpkgs {
