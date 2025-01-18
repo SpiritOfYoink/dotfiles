@@ -56,7 +56,6 @@
           ./configuration.nix
           ./modules/desktop.nix
           ./modules/home-manager.nix
-          home-manager.nixosModules
           ];
 
         "${host}" = nixpkgs.lib.nixosSystem {
