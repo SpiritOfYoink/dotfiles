@@ -38,7 +38,7 @@
     # Set your values in variables.nix!
 
     specialArgs = {
-      {inherit inputs; }; # Sends flake.nix's inputs to every nix module.
+      specialArgs = {inherit inputs; }; # Sends flake.nix's inputs to every nix module.
       user = "user";
       fullname = "fullname";
       hostname = "hostname";
