@@ -34,6 +34,16 @@
 
   outputs = inputs @ { self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
 
+    modules = [
+      ./configuration.nix
+      ./variables.nix
+      ./modules/desktop.nix
+      ./modules/home-manager.nix
+      ../../etc/nixos/hardware-configuration.nix
+      inputs.home-manager.nixosModules.default    # Pulls in the default home-manager module?
+      ];
+
+
     # Set your values in variables.nix!
 
     variables.nix = {
@@ -52,15 +62,6 @@
       };
 
     nixpkgs.config.allowUnfree = true;        # Allows unfree packages.
-
-    modules = [
-      ./configuration.nix
-      ./variables.nix
-      ./modules/desktop.nix
-      ./modules/home-manager.nix
-      ../../etc/nixos/hardware-configuration.nix
-      inputs.home-manager.nixosModules.default    # Pulls in the default home-manager module?
-      ];
 
     overlays = [
       ];
