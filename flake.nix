@@ -61,9 +61,9 @@
 
         "${host}" = nixpkgs.lib.nixosSystem {
             specialArgs = {
-              inherit [ user fullname host server github system pkgs lib ]
+              inherit user fullname host server github system pkgs lib;
             ExtraSpecialArgs = {
-              inherit [ user fullname host server github system pkgs lib ]
+              inherit user fullname host server github system pkgs lib;
               };
             };
 

@@ -56,7 +56,7 @@ imports = [    # You can import other NixOS modules here.
         sessionPackages = [ pkgs.niri ];
         autoLogin = {
           enable = true;
-          user = ${user}; # Currently not accepting variables?  someOption.user."${user}".fullName = fullname;
+          user = ${user};
           };
       videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
       defaultSession = "niri";
