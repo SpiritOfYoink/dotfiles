@@ -14,5 +14,5 @@
 
         system = "x86_64-linux";        # This doesn't need to change unless you're using ARM or Apple silicon.
         device = "//192.168.1.70/NAS_Storage";      # Where's your network storage attached? (SMB share.)
-        github = "git@github.com:user/repo#flakename"       # Change this to the github link for your repository.
+        github = "github:SpiritOfYoink/dotfiles"       # Change this to the github link for your repository.
     };

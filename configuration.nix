@@ -93,8 +93,8 @@ in {
     networking.firewall.extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';    # Tunes firewall to allow SMB sharing.
     security.polkit.enable = true;
 
-    services.gnome.gnome-keyring.enable = true;   # Gnome secrets portal, required for some apps.
-    security.pam.services.niri.enableGnomeKeyring = true; 
+    services.gnome.gnome-keyring.enable = false;   # Gnome secrets portal, required for some apps.
+    security.pam.services.niri.enableGnomeKeyring = false; 
 
     time.timeZone = "America/Los_Angeles";      # Sets your time zone.
     i18n.defaultLocale = "en_US.UTF-8";     # Selects internationalisation properties.

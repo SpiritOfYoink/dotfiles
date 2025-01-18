@@ -45,7 +45,8 @@
       system = config.modules.variables.system;
       device = config.modules.variables.device;
       github = config.modules.variables.github;
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+      lib = nixpkgs.lib
       };
 
     in {
