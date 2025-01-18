@@ -53,7 +53,7 @@ imports = [    # You can import other NixOS modules here.
         gdm.enable = true;
         gdm.wayland = true;
         gdm.settings.greeter.IncludeAll = true;
-        sessionPackages = [ pkgs.niri ] 
+        sessionPackages = [ pkgs.niri ];
         autoLogin = {
           enable = true;
           user = ${user}; # Currently not accepting variables?
@@ -62,6 +62,13 @@ imports = [    # You can import other NixOS modules here.
       defaultSession = "niri";
       libinput.enable = true; 
         };
+      };
+      udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
+      pipewire = {   # Enables Pipewire audio drivers.
+      enable = true;
+      alsa.enable = true;   # Enables the ALSA sound API.
+      alsa.Support32Bit = true;
+      pulse.enable = true;    # Enables PulseAudio server *emulation.*
       };
     };
 
@@ -73,12 +80,6 @@ imports = [    # You can import other NixOS modules here.
   sound.enable = true;    # Configureation of audio using Pipewire.
     security.rtkit.enable = true;   # Handles audio scheduling priority.
     hardware.pulseaudio.enable = false;   # Disables the old PulseAudio drivers.
-    services.pipewire = {   # Enables Pipewire audio drivers.
-      enable = true;
-      alsa.enable = true;   # Enables the ALSA sound API.
-      alsa.Support32Bit = true;
-      pulse.enable = true;    # Enables PulseAudio server *emulation.*
-      };
 
 
 #   ..... SYSTEM CONFIG .....
