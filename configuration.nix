@@ -76,7 +76,12 @@ imports = [    # You can import other NixOS modules here.
 
 #   ..... SYSTEM CONFIG .....
 
-  nix.extraOptions.experimental-features = "nix-command flakes";    # Enables the Flakes update system command in conjunction with a rebuild.
+  nix = {
+    settings.experimental-features =  [ "nix-command" "flakes"];    # Enables the Flakes update system command in conjunction with a rebuild.
+    checkConfig = true;
+    checkAllErrors = true; 
+    };
+
   environment.systemPackages = with pkgs; [
     git     # Flakes clones its dependencies through the git command, so this must come first.
     ];
