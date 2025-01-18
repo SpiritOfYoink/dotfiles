@@ -68,7 +68,7 @@
       modules = [
       
         ./configuration.nix {
-          SpecialArgs = {
+          SpecialArgs = [
             inherit user;
             inherit fullname;
             inherit host;
@@ -77,13 +77,13 @@
             inherit system;
             inherit pkgs;
             inherit lib;
-            };
-        }
+            ];
+        };
 
         ./modules/desktop.nix
 
         ./modules/home-manager.nix {
-          SpecialArgs = {
+          SpecialArgs = [
             inherit user;
             inherit fullname;
             inherit host;
@@ -92,11 +92,11 @@
             inherit system;
             inherit pkgs;
             inherit lib;
-            };
-          }
+            ];
+        };
 
         home-manager.nixosModules {
-          extraSpecialArgs = {
+          extraSpecialArgs = [
             inherit user;
             inherit fullname;
             inherit host;
@@ -105,8 +105,8 @@
             inherit system;
             inherit pkgs;
             inherit lib;
-            };
-          }
+            ];
+        };
         ];
 
     pkgs = import nixpkgs {
