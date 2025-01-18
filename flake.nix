@@ -76,7 +76,6 @@
       ];
 
     overlays = [
-      nixgl.overlay   # You can now reference pkgs.nixgl.nixGLIntel, etc.
       ];
 
     home-manager = {    # Configuration for home-manager.
