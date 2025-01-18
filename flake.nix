@@ -3,7 +3,7 @@
 
 #   ..... INPUTS .....
 
-  inputs = {
+  inputs = {self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";       # Nixpkgs.
     # nix.package = pkgs.nixVersions.latest;   # Prevents NixOS from throwing an error about nixVersions.unstable
     
@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = inputs @ { self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
+  outputs = { self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
 
     modules = [
       ./configuration.nix
@@ -61,10 +61,12 @@
       #rootpw = "rootpw";
       };
 
-    nixpkgs.config.allowUnfree = true;        # Allows unfree packages.
-
-    overlays = [
-      ];
+    pkgs = import nixpkgs {
+        inherit inputs;
+        overlays = { inherit inputs; };
+        config.allowUnfree = true;
+        config.contentAddressedByDefault = false;
+      };
 
     home-manager = {    # Configuration for home-manager.
       enable = true;
