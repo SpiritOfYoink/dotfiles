@@ -11,7 +11,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
  
     nix-colors.url = "github:misterio77/nix-colors";    # Nix colors.
-    nix-colors.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:mic92/sops-nix";   # Secret provisioning for password security.
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +28,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = inputs@{ self, nixpkgs, pkgs, specialArgs, ... }:
+  outputs = { self, nixpkgs, pkgs, specialArgs, ... }:
 
   #   ..... VARIABLES .....    
   let
