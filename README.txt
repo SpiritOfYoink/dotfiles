@@ -17,9 +17,9 @@ INSTALLATION:
 
 6) sudo git clone https://github.com/SpiritOfYoink/dotfiles /home/dotfiles && cd /home/dotfiles
 
-7) cd /etc/nixos && sudo mv -f hardware-configuration.nix /home/dotfiles
+7) sudo mv -f /etc/nixos/hardware-configuration.nix /home/dotfiles/hardware-configuration.nix
 
-8) cd /home/dotfiles && sudo nano /home/dotfiles/flake.nix
+8) sudo nano /home/dotfiles/flake.nix
 
 9) Change the variables (under the VARIABLES header) to appropriate values for your computer.
 
