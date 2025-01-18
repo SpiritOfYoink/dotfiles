@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = inputs @ { self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
+  outputs = { self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... } @ inputs:
 
     modules = [
       ./configuration.nix
@@ -75,5 +75,4 @@
         useUserPackages = true;
         };
       };
-    };
 }
