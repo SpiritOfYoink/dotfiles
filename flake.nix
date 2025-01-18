@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = { self, nixpkgs, pkgs, config, lib, specialArgs, ... }:
+  outputs = inputs@{ self, nixpkgs, pkgs, config, lib, specialArgs, ... }:
 
   #   ..... VARIABLES .....    
   let
@@ -46,7 +46,7 @@
     server = "//192.168.1.70/NAS_Storage";      # Where's your network storage attached? (SMB share.)
     github = "https://github.com/SpiritOfYoink/dotfiles";       # Change this to the github link for your repository.
 
-    pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";    # If 'system' changes, change this!
+    pkgs = nixpkgs.legacyPackages."x86_64-linux";    # If 'system' changes, change this!
     lib = nixpkgs.lib;    # No need to change this.
 
   in {
