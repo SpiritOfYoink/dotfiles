@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = { self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
+  outputs = inputs @ { self, nixpkgs, pkgs, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }:{
 
     modules = [
       ./configuration.nix
