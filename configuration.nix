@@ -1,7 +1,7 @@
 { self, nixpkgs, pkgs, config, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }: {
 
 imports = [    # You can import other NixOS modules here.
-  ./hardware-configuration.nix
+  ../../etc/nixos/hardware-configuration.nix
   ./modules/home-manager.nix
   ./modules/desktop.nix
   ./modules/variables.nix

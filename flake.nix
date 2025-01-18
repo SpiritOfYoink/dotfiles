@@ -72,6 +72,7 @@
         ./configuration.nix;
         ./modules/desktop.nix;
         ./modules/home-manager.nix;
+        ../../etc/nixos/hardware-configuration.nix
         inputs.home-manager.nixosModules.default;    # Pulls in the default home-manager module?
         ];
 
