@@ -15,9 +15,11 @@ INSTALLATION:
 
 5) sudo nixos-rebuild switch
 
+cd /
+
 6) sudo git clone https://github.com/SpiritOfYoink/dotfiles /home/dotfiles && cd /home/dotfiles
 
-# 7) sudo mv -f /etc/nixos/hardware-configuration.nix /home/dotfiles/hardware-configuration.nix
+
 
 8) sudo nano /home/dotfiles/flake.nix
 

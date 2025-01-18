@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = inputs@{ self, nixpkgs, pkgs, config, lib, specialArgs, ... }:
+  outputs = inputs@{ self, nixpkgs, pkgs, lib, specialArgs, ... }:
 
   #   ..... VARIABLES .....    
   let
