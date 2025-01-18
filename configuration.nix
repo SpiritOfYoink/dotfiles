@@ -27,7 +27,7 @@ imports = [    # You can import other NixOS modules here.
 
     nvidia = {
       open = false;   # Uses the open-source modules (not drivers). Currently alpha-state and buggy.
-      package = config.boot.kernelPackages.nvidiaPackages.beta;   # Use most recent Nvidia drivers.
+      package = config.boot.kernelPackages.nvidiaPackages.stable;   # Use most recent Nvidia drivers.
       nvidiaSettings = true;    # Enables the nvidia settings menu.
       modesetting.enable = true;    # Modesetting is required.
       powerManagement.enable = false;   # Experimental and can cause sleep/suspend to fail. Enable if having crashes after wakie from sleep.
@@ -42,17 +42,17 @@ imports = [    # You can import other NixOS modules here.
   #   ..... GNOME DISPLAY MANAGER - LOGIN .....
   services = {
     xserver = {   # Terrible name, but services.xserver is used for GUI-related commands.
-      layout = "us"
       enable = true
+      layout = "us"
       videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
-      };
-    displayManager = {
-      gdm.enable = true
-      autoLogin = {
-        enable = true
-        user = ${user} # Currently not accepting variables?
-        };
+      displayManager = {
+        gdm.enable = true
+        autoLogin = {
+          enable = true
+          user = ${user} # Currently not accepting variables?
+          };
       defaultSession = "niri";
+        };
       };
     };
 
@@ -111,7 +111,7 @@ imports = [    # You can import other NixOS modules here.
       LC_TELEPHONE = "en_US.UTF-8";
       LC_TIME = "en_US.UTF-8";
       };
-  
+
   services.xserver = {    # Sets keyboard region and layout.
     layout = "US";
     xkbVariant = "";
