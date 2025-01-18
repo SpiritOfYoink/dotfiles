@@ -68,15 +68,15 @@
     nixpkgs.config.allowUnfree = true;        # Allows unfree packages.
 
     modules = [
-      ./configuration.nix;
-      ./modules/desktop.nix;
-      ./modules/home-manager.nix;
+      ./configuration.nix
+      ./modules/desktop.nix
+      ./modules/home-manager.nix
       ../../etc/nixos/hardware-configuration.nix
-      inputs.home-manager.nixosModules.default;    # Pulls in the default home-manager module?
+      inputs.home-manager.nixosModules.default    # Pulls in the default home-manager module?
       ];
 
     overlays = [
-      nixgl.overlay;   # You can now reference pkgs.nixgl.nixGLIntel, etc.
+      nixgl.overlay   # You can now reference pkgs.nixgl.nixGLIntel, etc.
       ];
 
     home-manager = {    # Configuration for home-manager.

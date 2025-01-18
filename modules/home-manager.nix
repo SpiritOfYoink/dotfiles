@@ -41,15 +41,15 @@
     squirreldisk    # Disk space analysis tool.
 
     opera    # Browser
-    termite.browser = "opera";   # Allows URLs to be clicked on to open them in the browser.
-    termite.clickableUrl = true;
+    termite.browser = "opera"   # Allows URLs to be clicked on to open them in the browser.
+    termite.clickableUrl = true
 
   # Alias allowing the shell command 'rebuild' to do a full rebuild from github.
     (pkgs.writeShellScriptBin "rebuild" ''
       cd "${dotfiles}"
       sudo nixos-rebuild switch --flake '${github}'
       "
-      '');
+      '')
     ];
 
   home.programs = {
