@@ -28,7 +28,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = { self, nixpkgs, pkgs, specialArgs, ... }:
+  outputs = inputs@{ self, nixpkgs, specialArgs, ... }:
 
   #   ..... VARIABLES .....    
   let

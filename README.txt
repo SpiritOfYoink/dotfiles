@@ -15,19 +15,17 @@ INSTALLATION:
 
 5) sudo nixos-rebuild switch
 
-cd /
+6) cd /
 
 6) sudo git clone https://github.com/SpiritOfYoink/dotfiles /home/dotfiles && cd /home/dotfiles
 
+7) sudo nano /home/dotfiles/flake.nix
 
+8) Change the variables (under the VARIABLES header) to appropriate values for your computer.
 
-8) sudo nano /home/dotfiles/flake.nix
+9) Exit nano with Ctl+X, Y, Enter.
 
-9) Change the variables (under the VARIABLES header) to appropriate values for your computer.
-
-10) Exit nano with Ctl+X, Y, Enter.
-
-11) sudo nixos-rebuild switch --flake /home/dotfiles
+10) sudo nixos-rebuild switch --flake /home/dotfiles
 
 
 Note: from then on, you simply need to use 'rebuild' to rebuild and switch the system configuration.

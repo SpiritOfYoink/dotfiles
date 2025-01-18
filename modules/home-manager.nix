@@ -1,4 +1,4 @@
-{ self, nixpkgs, pkgs, config, specialArgs ...  }: {
+{ self, nixpkgs, specialArgs ...  }: {
 
 #   ..... BOILERPLATE ..... 
 

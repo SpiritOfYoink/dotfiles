@@ -1,4 +1,4 @@
-{ self, nixpkgs, pkgs, specialArgs, ... }: {
+{ self, nixpkgs, specialArgs, ... }: {
 
 imports = [
   inputs.niri.nixosModules.niri   # Niri window manager
