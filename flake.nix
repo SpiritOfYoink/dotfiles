@@ -53,16 +53,16 @@
   in {
     nixosConfigurations = {
       "${host}" = nixpkgs.lib.nixosSystem {
-          specialArgs.inherit = [
-            user
-            fullname
-            host
-            server
-            github
-            system
-            pkgs
-            lib
-            ];
+          specialArgs = {
+            inherit user
+            inherit fullname
+            inherit host
+            inherit server
+            inherit github
+            inherit system
+            inherit pkgs
+            inherit lib
+            };
           };
 
       modules = [
