@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-  outputs = inputs @ { self, nixpkgs, pkgs, config, lib, specialArgs, ... }: rec {
+
 
   #   ..... VARIABLES .....    
   let
@@ -51,26 +51,27 @@
     lib = nixpkgs.lib;    # No need to change this.
 
   in {
-    nixosConfigurations = {
+    outputs = inputs @ { self, nixpkgs, pkgs, config, lib, specialArgs, ... }: rec {
+      nixosConfigurations = {
 
-      modules = [
-        ./configuration.nix
-        ./modules/desktop.nix
-        ./modules/home-manager.nix
-        home-manager.nixosModules
-        ];
+        modules = [
+          ./configuration.nix
+          ./modules/desktop.nix
+          ./modules/home-manager.nix
+          home-manager.nixosModules
+          ];
 
-      "${host}" = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit = [ user fullname host server github system pkgs lib ]
+        "${host}" = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit = [ user fullname host server github system pkgs lib ]
+              };
             };
-          };
 
-    pkgs = import nixpkgs {
-        config.allowUnfree = true;
-        config.contentAddressedByDefault = false;
+      pkgs = import nixpkgs {
+          config.allowUnfree = true;
+          config.contentAddressedByDefault = false;
+          };
         };
       };
-    };
   };
 }
