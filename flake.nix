@@ -18,8 +18,6 @@
     
     nix-gl.url = "github:nix-community/nixgl";    # Wrapper to fix launching openGL games.
     nix-gl.inputs.nixpkgs.follows = "nixpkgs";
-
-    nil.url = "https://github.com/oxalica/nil";   # Nix Language Server for VSCode.
   
     niri-stable.url = "github:YaLTeR/niri/v25.01";    # Niri window manager.
     niri-stable.inputs.nixpkgs.follows = "nixpkgs";
