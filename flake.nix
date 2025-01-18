@@ -36,21 +36,8 @@
 
     # Set your values in variables.nix!
 
-    specialArgs = {
+    variables.nix = {
       specialArgs = {inherit inputs; }; # Sends flake.nix's inputs to every nix module.
-      user = "user";
-      fullname = "fullname";
-      hostname = "hostname";
-      server = "server";
-      github = "github";
-      system = "system";
-      pkgs = inputs.nixpkgs.legacyPackages."system";
-      lib = nixpkgs.lib;
-      #password = "password";
-      #rootpw = "rootpw";
-      };
-
-    ExtraSpecialArgs = {
       ExtraSpecialArgs = { inherit inputs; };   # Sends flake.nix's inputs to every home manager module.
       user = "user";
       fullname = "fullname";
@@ -62,13 +49,13 @@
       lib = nixpkgs.lib;
       #password = "password";
       #rootpw = "rootpw";
-
       };
 
     nixpkgs.config.allowUnfree = true;        # Allows unfree packages.
 
     modules = [
       ./configuration.nix
+      ./variables.nix
       ./modules/desktop.nix
       ./modules/home-manager.nix
       ../../etc/nixos/hardware-configuration.nix
