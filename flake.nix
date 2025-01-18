@@ -62,7 +62,6 @@
       };
 
     pkgs = import nixpkgs {
-        inherit inputs;
         overlays = { inherit inputs; };
         config.allowUnfree = true;
         config.contentAddressedByDefault = false;
