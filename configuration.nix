@@ -27,12 +27,14 @@ imports = [    # You can import other NixOS modules here.
 
     nvidia = {
       open = false;   # Uses the open-source modules (not drivers). Currently alpha-state and buggy.
-      package = config.boot.kernelPackages.nvidiaPackages.stable;   # Use most recent Nvidia drivers.
-      nvidiaSettings = true;    # Enables the nvidia settings menu.
-      modesetting.enable = true;    # Modesetting is required.
+      package = config.boot.kernelPackages.nvidiaPackages.latest;   # Use most recent Nvidia drivers.
+
       powerManagement.enable = false;   # Experimental and can cause sleep/suspend to fail. Enable if having crashes after wakie from sleep.
       powerManagement.finegrained = false;    # Turns off GPU when not in use. Do not enable.
       powerManagement.open = false;   # Disables open-source power management.
+
+      nvidiaSettings = true;    # Enables the nvidia settings menu.
+      modesetting.enable = true;    # Modesetting is required to run wayland.
       prime.sync.enable = true;   # Enables G-Sync.
       }
 
