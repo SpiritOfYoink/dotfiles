@@ -54,58 +54,58 @@
     nixosConfigurations = {
       "${host}" = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit user
-            inherit fullname
-            inherit host
-            inherit server
-            inherit github
-            inherit system
-            inherit pkgs
-            inherit lib
+            inherit user;
+            inherit fullname;
+            inherit host;
+            inherit server;
+            inherit github;
+            inherit system;
+            inherit pkgs;
+            inherit lib;
             };
           };
 
       modules = [
       
         ./configuration.nix {
-          SpecialArgs.inherit = [
-            user
-            fullname
-            host
-            server
-            github
-            system
-            pkgs
-            lib
-            ];
+          SpecialArgs = {
+            inherit user;
+            inherit fullname;
+            inherit host;
+            inherit server;
+            inherit github;
+            inherit system;
+            inherit pkgs;
+            inherit lib;
+            };
         };
 
         ./modules/desktop.nix
 
         ./modules/home-manager.nix {
-          SpecialArgs.inherit = [
-            user
-            fullname
-            host
-            server
-            github
-            system
-            pkgs
-            lib
-            ];
+          SpecialArgs = {
+            inherit user;
+            inherit fullname;
+            inherit host;
+            inherit server;
+            inherit github;
+            inherit system;
+            inherit pkgs;
+            inherit lib;
+            };
           };
 
         home-manager.nixosModules {
-          extraSpecialArgs.inherit = [
-            user
-            fullname
-            host
-            server
-            github
-            system
-            pkgs
-            lib
-            ];
+          extraSpecialArgs = {
+            inherit user;
+            inherit fullname;
+            inherit host;
+            inherit server;
+            inherit github;
+            inherit system;
+            inherit pkgs;
+            inherit lib;
+            };
           };
         ];
 
@@ -113,15 +113,6 @@
         config.allowUnfree = true;
         config.contentAddressedByDefault = false;
       };
-
-    home-manager = {    # Configuration for home-manager.
-      enable = true;
-      ExtraSpecialArgs = { inherit inputs; };   # Sends flake.nix's inputs to every home manager module.
-      users.${user} = {
-        backupFileExtension = "backup";
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        };
-      };
     };
+  };
 }
