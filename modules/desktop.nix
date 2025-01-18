@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, outputs, home-manager, niri, ... }: {
+{ self, nixpkgs, pkgs, inputs, outputs, config, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ...  }: {
 
 imports = [
   inputs.niri.nixosModules.niri;   # Niri window manager

@@ -32,54 +32,66 @@
 
 #   ..... OUTPUTS .....
 
-  outputs= { self, nixpkgs, config, pkgs, lib, inputs, outputs, home-manager, niri, ... }:
+  outputs= { self, nixpkgs, pkgs, inputs, outputs, config, lib, home-manager, niri, user, fullname, hostname, password, rootpw, server, github, ... }@inputs:
 
-    #   ..... VARIABLES .....    
-    let {
-      user = "yoink";     # What's your login?
-      fullname = "The Spirit of Yoink!";      # What's the user called?
-      hostname = "Ncase M2";      # What's the computer called?
 
-      #password = mkOption {};        # What is the user's secret file?
-      #rootpw = mkOption {};      # What is the root user's secret file?
+    # Set your values in variables.nix!
 
-      server = "//192.168.1.70/NAS_Storage";      # Where's your network storage attached? (SMB share.)
-      github = "github:SpiritOfYoink/dotfiles";       # Change this to the github link for your repository.
-
-      system = "x86_64-linux";        # This doesn't need to change unless you're using ARM or Apple silicon.
-      pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";    # If 'system' changes, change this!
+    specialArgs = {
+      {inherit inputs; }; # Sends flake.nix's inputs to every nix module.
+      user = "user";
+      fullname = "fullname";
+      hostname = "hostname";
+      server = "server";
+      github = "github";
+      system = "system";
+      pkgs = inputs.nixpkgs.legacyPackages."system";
       lib = nixpkgs.lib;
+      #password = "password";
+      #rootpw = "rootpw";
+      };
 
-    in {
-      nixosConfigurations.config.modules = nixpkgs.lib.nixosSystem {
-        SpecialArgs = {inherit inputs; }; # Sends flake.nix's inputs to every nix module.
-        modules = [
-          ./configuration.nix;
-          ./modules/desktop.nix;
-          ./modules/home-manager.nix;
-          inputs.home-manager.nixosModules.default;    # Pulls in the default home-manager module?
-          ];
+    ExtraSpecialArgs = {
+      ExtraSpecialArgs = { inherit inputs; };   # Sends flake.nix's inputs to every home manager module.
+      user = "user";
+      fullname = "fullname";
+      hostname = "hostname";
+      server = "server";
+      github = "github";
+      system = "system";
+      pkgs = inputs.nixpkgs.legacyPackages."system";
+      lib = nixpkgs.lib;
+      #password = "password";
+      #rootpw = "rootpw";
 
-        overlays = [
-          nixgl.overlay;   # You can now reference pkgs.nixgl.nixGLIntel, etc.
-          ];
-        };
+      };
 
-        home-manager = {    # Configuration for home-manager.
-          enable = true;
-          ExtraSpecialArgs = { inherit inputs; };   # Sends flake.nix's inputs to every home manager module.
-          users.${user} = {
-            imports = [
-              eww.homeManagerModules.${system}.default    # Imports ElKowar's Wacky Widgets, used for taskbar and notifications.
-              inputs.nix-colors.homeManagerModules.default    # Imports nix-colors, a comprehensive style selector.
-              ];
-            backupFileExtension = "backup";
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            };
+      nixpkgs.config.allowUnfree = true;        # Allows unfree packages.
+
+      modules = [
+        ./configuration.nix;
+        ./modules/desktop.nix;
+        ./modules/home-manager.nix;
+        inputs.home-manager.nixosModules.default;    # Pulls in the default home-manager module?
+        ];
+
+      overlays = [
+        nixgl.overlay;   # You can now reference pkgs.nixgl.nixGLIntel, etc.
+        ];
+
+      home-manager = {    # Configuration for home-manager.
+        enable = true;
+        ExtraSpecialArgs = { inherit inputs; };   # Sends flake.nix's inputs to every home manager module.
+        users.${user} = {
+          imports = [
+            eww.homeManagerModules.${system}.default    # Imports ElKowar's Wacky Widgets, used for taskbar and notifications.
+            inputs.nix-colors.homeManagerModules.default    # Imports nix-colors, a comprehensive style selector.
+            ];
+          backupFileExtension = "backup";
+          useGlobalPkgs = true;
+          useUserPackages = true;
           };
         };
-      };
 };
 
 
