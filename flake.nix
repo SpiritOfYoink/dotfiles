@@ -78,7 +78,7 @@
             inherit pkgs;
             inherit lib;
             };
-        };
+        }
 
         ./modules/desktop.nix
 
@@ -93,7 +93,7 @@
             inherit pkgs;
             inherit lib;
             };
-          };
+          }
 
         home-manager.nixosModules {
           extraSpecialArgs = {
@@ -106,7 +106,7 @@
             inherit pkgs;
             inherit lib;
             };
-          };
+          }
         ];
 
     pkgs = import nixpkgs {
