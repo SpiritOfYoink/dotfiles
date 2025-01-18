@@ -15,7 +15,7 @@ INSTALLATION:
 
 5) sudo nixos-rebuild switch
 
-6) git clone https://github.com/SpiritOfYoink/dotfiles /home/dotfiles && cd /home/dotfiles
+6) sudo git clone https://github.com/SpiritOfYoink/dotfiles /home/dotfiles && cd /home/dotfiles
 
 7) sudo nixos-generate-config --root /home/dotfiles
 
