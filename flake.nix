@@ -62,9 +62,6 @@
             specialArgs = {
               inherit user fullname host server github pkgs lib;
               };
-            ExtraSpecialArgs = {
-              inherit user fullname host server github pkgs lib;
-              };
             };
 
       pkgs = import nixpkgs {
