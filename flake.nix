@@ -32,7 +32,7 @@
 
 #   ..... OUTPUTS .....
 
-
+  outputs = { self, nixpkgs, pkgs, config, lib, specialArgs, ... }: rec {
 
   #   ..... VARIABLES .....    
   let
@@ -51,7 +51,6 @@
     lib = nixpkgs.lib;    # No need to change this.
 
   in {
-    outputs = inputs @ { self, nixpkgs, pkgs, config, lib, specialArgs, ... }: rec {
       nixosConfigurations = {
 
         modules = [
