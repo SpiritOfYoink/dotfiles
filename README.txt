@@ -1,6 +1,6 @@
 How are you here? This is designed for one of four people, and three of them don't know how to use Nix.
 
-INSTALLATION:
+(depricated) installation:
 
 1) Install NixOS (no GUI needed), and run the following terminal commands:
 

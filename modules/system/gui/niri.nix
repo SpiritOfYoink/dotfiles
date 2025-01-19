@@ -1,11 +1,17 @@
-{ self, nixpkgs, attrs, ... }: {
+{pkgs, lib, config ... }: with lib;
 
-imports = [
-  inputs.niri.nixosModules.niri   # Niri window manager
-  ];
+let
+  cfg = config.modules.system.gui;    # Shorter name to access final settings. cfg is a typical convention.
+in {
 
-  #   ..... NIRI - WINDOW MANAGER .....
+#   ..... CALLABLE OPTIONS .....
+  options = { niri.enable = mkEnableOption "Enables Niri window manager."; };
+
+#   ..... CONFIG .....
+  config = mkIf cfg.niri.enable {
+
     #   ..... SETTINGS .....
+
     niri-flake.cache.enable = true;
     nixpkgs.overlays = [niri.overlays.niri];
     environment.variables.NIXOS_OZONE_WL = "1";
@@ -21,7 +27,9 @@ imports = [
           focus-follows-mouse-max-scroll-amount = "10%";
           };
 
+
         #   ..... KEYBINDINGS .....
+
         binds = with config.lib.niri.actions; {
           "Mod+Minus".action = set-column-width "+10%";
           "Mod+Equals".action = set-column-width "-10%";
@@ -30,11 +38,15 @@ imports = [
           <name>.repeat = false;
           };
 
+
         #   ..... STARTUP: .....
+
         spawn-at-startup = "eww";   # Taskbar and notifications.
         spawn-at-startup = "fuzzel";    # Program launcher.
 
+
         #   ..... LAYOUT .....
+
         layout = {
           gaps = 16;
           center-focused-column = "never";
@@ -63,12 +75,13 @@ imports = [
             proportion = 0.33333 ;
             proportion = 0.5 ;
             proportion = 0.66667 ;
-            };
-          };
+            }; };
+
 
         #   ..... RULES .....
+
         window-rules = {
-          window-rule = {     # Universal window rules?
+          window-rule = {   # Universal window rules?
             geometry-corner-radius = 12;
             clip-to-geometry = true;
             variable-refresh-rate = true;
@@ -88,7 +101,7 @@ imports = [
             block-out-from = "screen-capture";
             };
 
-          layer-rule = {   # Blocks mako notifications from any screencast. How does this work with eww notifications?
+          layer-rule = {    # Blocks mako notifications from any screencast. How does this work with eww notifications?
             match = namespace="^notifications$";
             block-out-from = "screen-capture";
             };
@@ -96,13 +109,7 @@ imports = [
           layer-rule = {    # Makes fuzzel semitransparent.
             match = namespace="^launcher$";
             opacity = 0.85 ;
-            };
-          };
-        };    # End of niri.settings 
-      };    # End of Niri.
+            }; };
+      }; }; };
 
-  #   ..... EWW - TASKBAR AND NOTIFICATIONS .....
-
-  #   ..... FUZZEL - PROGRAM LAUNCHER .....
-
-}
+}   # End of file.

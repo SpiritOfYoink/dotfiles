@@ -1,55 +1,10 @@
 {
-  description = "YoinkOS configuration and versioning.";
+  description = "You don't need to mess with this. It controls software versioning on your system.";
 
 #   ..... INPUTS .....
-
-
-
-
-#   ..... OUTPUTS .....
-
-  outputs = { self, nixpkgs, specialArgs, ... }@attrs: {
-
-  #   ..... VARIABLES .....    
-  let
-    user = "yoink";     # What's your login?
-    fullname = "The Spirit of Yoink!";      # What's the user called?
-    host = "Ncase M2";      # What's the computer called?
-
-    #password = ;        # What is the user's secret file?
-    #rootpw = ;      # What is the root user's secret file?
-
-    server = "//192.168.1.70/NAS_Storage";      # Where's your network storage attached? (SMB share.)
-    github = "https://github.com/SpiritOfYoink/dotfiles";       # Change this to the github link for your repository.
-
-    pkgs = nixpkgs.legacyPackages."x86_64-linux";    # If 'system' changes, change this!
-    lib = nixpkgs.lib;    # No need to change this.
-
-  in {
-      nixosConfigurations = {
-
-        "${host}" = nixpkgs.lib.nixosSystem {
-            specialArgs = attrs;
-            ExtraSpecialArgs = attrs;
-            modules = [
-              ./configuration.nix
-              ./modules/desktop.nix
-              ./modules/home-manager.nix
-              ];
-            };
-          
-      pkgs = import nixpkgs {
-          config.allowUnfree = true;
-          config.contentAddressedByDefault = false;
-          };
-        };
-      };
-  };
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";       # Nixpkgs.
-    # nix.package = pkgs.nixVersions.latest;   # Prevents NixOS from throwing an error about nixVersions.unstable
-    
+
     home-manager.url = "github:nix-community/home-manager";    # Home manager.
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
  
@@ -67,4 +22,49 @@
     xwayland-satellite-stable.url = "github:Supreeeme/xwayland-satellite/v0.5";   # Allows Niri to hook into wayland.
     xwayland-satellite-stable.inputs.nixpkgs.follows = "nixpkgs";
     };
-}
+
+
+#   ..... OUTPUTS .....
+  outputs = {self, nixpkgs, ... }@inputs:{
+
+    system = "x86_64-linux";
+    ISO = self.nixosConfigurations.iso.config.system.build.isoImage;
+    homeManagerModules.default = ./modules/home-manager
+
+
+#   ..... HOST SETUPS .....
+
+    nixosConfigurations = {       
+
+      yoink = nixpkgs.lib.nixosSystem rec {   # THE SPIRIT OF YOINK
+        specialArgs = { inherit inputs; };   # The `specialArgs` parameter passes the non-default nixpkgs instances to other nix modules
+        modules = [ ./hosts/yoink/configuration.nix ];
+        };
+
+
+ #     dame = nixpkgs.lib.nixosSystem rec {    # NO AIM DAME
+ #       specialArgs = { inherit inputs; };
+ #         modules = [ ./hosts/dame/configuration.nix ];
+ #         };
+
+ #    mac = nixpkgs.lib.nixosSystem rec {   # MAC'N'CHEESE
+ #       specialArgs = { inherit inputs; };
+ #         modules = [ ./hosts/mac/configuration.nix ];
+ #         };
+
+ #     su = nixpkgs.lib.nixosSystem rec {    # SU
+ #       specialArgs = { inherit inputs; };
+ #         modules = [ ./hosts/su/configuration.nix ];
+ #         };
+
+ #     server = nixpkgs.lib.nixosSystem rec {    # SERVER
+ #       specialArgs = { inherit inputs; };
+ #         modules = [ ./hosts/server/configuration.nix ];
+ #         };
+
+ #     iso = nixpkgs.lib.nixosSystem {   # For making a Nix installation USB.
+ #       system = "x86_64-linux";
+ #       specialArgs = { inherit inputs; };
+ #       modules = [ ./hosts/iso/configuration.nix ];
+ #       };  
+    }; };  }   # End of file.

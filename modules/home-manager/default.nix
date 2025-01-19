@@ -1,4 +1,39 @@
-{ self, nixpkgs, attrs ...  }: {
+
+
+{ inputs, ...  }: {
+
+
+# enable services
+
+myservice.enable = true;
+myservice2.enable = true; 
+
+# enable programs
+
+myprogram.enable = true;
+myprogram2.enable = true; 
+
+# enable services
+
+myProgramBundle.enable = true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #   ..... BOILERPLATE ..... 
 
