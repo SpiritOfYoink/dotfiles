@@ -9,7 +9,7 @@ in {
 imports = [
   ./boot.nix
   ./drivers.nix
-  ./services.nix
+  ./daemons.nix
   ./gui
   ];
 
@@ -17,10 +17,9 @@ imports = [
 
     cfg.boot.enable = mkDefault true;
 
+    cfg.daemons.enable = mkDefault true;
+
     cfg.drivers.enable = mkDefault true;
     cfg.drivers.nvidia-drivers.enable = mkDefault true;
 
-
-    cfg.services.enable = mkDefault true;
-    
 }   # End of file.

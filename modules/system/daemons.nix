@@ -5,10 +5,10 @@ let
 in {
 
 #   ..... CALLABLE OPTIONS .....
-  options = { services.enable = mkEnableOption "Enables various daemons."; };
+  options = { daemons.enable = mkEnableOption "Enables various daemons."; };
 
 #   ..... CONFIG .....
-  config = mkIf cfg.services.enable {
+  config = mkIf cfg.daemons.enable {
 
     nix.gc = {    # Manages garbage collection.
       enable = true; 
