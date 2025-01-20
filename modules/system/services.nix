@@ -5,8 +5,7 @@ let
 in {
 
 #   ..... CALLABLE OPTIONS .....
-  options = {
-    services.enable = mkEnableOption "Enables various daemons.";
+  options = { services.enable = mkEnableOption "Enables various daemons."; };
 
 #   ..... CONFIG .....
   config = mkIf cfg.services.enable {
