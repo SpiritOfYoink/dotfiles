@@ -16,18 +16,27 @@ Step 3: Add the following lines below the imports = []; section:
 
 Step 4: Next, navigate to /home on the same volume. Right click and select "open in terminal."
 
-Step 3: Run:
-    sudo git clone https://github.com/spiritofyoink/dotfiles
+Step 5: In the terminal, run:
+    sudo nixos-rebuild switch && sudo git clone https://github.com/spiritofyoink/dotfiles
 
-Step 4: Reboot.
+Step 6: Run the following, replacing <my-system> with your user or host. Current hosts are yoink, dame, mac, & hamster.
 
-Step 5: After logging back in, run:
-    cd /home/dotfiles
+    sudo nixos-rebuild boot --flake github:spiritofyoink/dotfiles#<my-system>
 
-Step 6: Run the following terminal command, replacing <my-system> with your user or host. Current hosts are yoink, dame, mac, & hamster.
+Step 7: Finally, run:
 
-    sudo nixos-rebuild switch --flake github:spiritofyoink/dotfiles#<my-system>
+    sudo nixos-generate-config --root /home/dotfiles
+
+Step 8: Reboot. You should now be in NixOS.
 
 
 
 Note: from then on, you simply need to use 'rebuild' to rebuild and switch the system configuration.
+
+
+
+try:
+
+export NIX_CONFIG="experimental-features = nix-command flakes"
+nix shell nixpkgs#git --command nix flake clone github:spiritofyoink/dotfiles --dest ~/dotfiles
+nix shell nixpkgs#git --command sudo nixos-rebuild switch --flake ~/dotfiles#<my-system>
