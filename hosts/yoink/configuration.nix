@@ -93,7 +93,7 @@ programs = {    # *Most* programs are managed through home-manager. See home-man
 
   steam = {   # Steam
       enable = true;
-      package = pkgs.steam.override.withJava = true;    # Allows for Java games.
+      package = override.withJava = true;    # Allows for Java games.
 
       remotePlay.openFirewall = true;   # Open ports in the firewall for Steam Remote Play.
       localNetworkGameTransfers.openFirewall = true;    # Open ports in the firewall for Steam Local Network Game Transfers.
