@@ -38,11 +38,10 @@ in {
       }; };
 
 #   ..... SERVICES .....
-    with services = {
-      printing.enable = true;   # CUPS printing service.
-      libinput.enable = true;   # Enables mouse input.
-
+    services = {
       xserver = {
+        printing.enable = true;   # CUPS printing service.
+        libinput.enable = true;   # Enables mouse input.
         pipewire = {   # Enables Pipewire audio drivers.
           enable = true;
           audio.enable = true;    # Makes Pipewire the default audio handler.
