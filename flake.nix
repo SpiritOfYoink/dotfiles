@@ -30,41 +30,5 @@
     system = "x86_64-linux";
     ISO = self.nixosConfigurations.iso.config.system.build.isoImage;
     homeManagerModules.default = ./modules/home-manager;
-
-
-#   ..... HOST SETUPS .....
-
-    nixosConfigurations = {       
-
-      yoink = nixpkgs.lib.nixosSystem rec {   # THE SPIRIT OF YOINK
-        specialArgs = { inherit inputs; };   # The `specialArgs` parameter passes the non-default nixpkgs instances to other nix modules
-        modules = [ ./hosts/yoink/configuration.nix ];
-        };
-
-
- #     dame = nixpkgs.lib.nixosSystem rec {    # NO AIM DAME
- #       specialArgs = { inherit inputs; };
- #         modules = [ ./hosts/dame/configuration.nix ];
- #         };
-
- #    mac = nixpkgs.lib.nixosSystem rec {   # MAC'N'CHEESE
- #       specialArgs = { inherit inputs; };
- #         modules = [ ./hosts/mac/configuration.nix ];
- #         };
-
- #     su = nixpkgs.lib.nixosSystem rec {    # SU
- #       specialArgs = { inherit inputs; };
- #         modules = [ ./hosts/su/configuration.nix ];
- #         };
-
- #     server = nixpkgs.lib.nixosSystem rec {    # SERVER
- #       specialArgs = { inherit inputs; };
- #         modules = [ ./hosts/server/configuration.nix ];
- #         };
-
- #     iso = nixpkgs.lib.nixosSystem {   # For making a Nix installation USB.
- #       system = "x86_64-linux";
- #       specialArgs = { inherit inputs; };
- #       modules = [ ./hosts/iso/configuration.nix ];
- #       };  
-    }; };  }   # End of file.
+    
+}   # End of file.
