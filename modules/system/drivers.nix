@@ -7,12 +7,8 @@ in {
 #   ..... CALLABLE OPTIONS .....
   options = {
     drivers.enable = mkEnableOption "Enables drivers. You probably want these.";
-
-    nvidia-drivers.enable = .mkOption {
-      default = "false";
-      type = with types; bool;
-      description = "Enables Nvidia propriatary drivers."
-      }; };
+    nvidia-drivers.enable = mkEnableOption "Enables Nvidia propriatary drivers.";
+    };
 
 #   ..... CONFIG .....
   config = mkIf cfg.drivers.enable {
