@@ -5,6 +5,7 @@ How are you here? This is designed for one of four people, and three of them don
 
 Step 1: Install NixOS using a graphical installer. For user, put your hostname. Current hosts are yoink, dame, mac, & hamster.
         Choose a temporary password, login automatically, and reuse password for administrator. Select no desktop when prompted.
+        Finally, partition the hard drive you're installing NixOS to, with swap but no hibernate.
 
 
 Step 2: Reboot, removing the installation media.
@@ -22,7 +23,7 @@ Step 4: Run:
 
 Step 5: Run the following, replacing <my-system> with the host you chose above. (yoink, dame, mac, or hamster).
 
-    nix shell nixpkgs#git --command sudo nixos-rebuild switch --flake ~/dotfiles#<my-system>
+    nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake ~/dotfiles#<my-system>
 
 
 Step 6: Reboot. You should now be in NixOS.
