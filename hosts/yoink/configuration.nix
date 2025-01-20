@@ -23,8 +23,10 @@
 
 #   ..... CONFIG .....
 
-    nix.nixPath = [ "/home/dotfiles/${user}/configuration.nix" ];
-
+    environment.sessionVariables = {
+      NIX_PATH = "/home/dotfiles/${user}/configuration.nix";
+      };
+    
     nixpkgs.config.allowUnfree = true;
     nvidia-drivers.enable = true;
     programs.gamemode.enable = true;    # TODO: See if this needs more setting up.
