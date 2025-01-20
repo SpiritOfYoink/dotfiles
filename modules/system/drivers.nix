@@ -20,7 +20,7 @@ in {
         enable32Bit = true;   # Enables 32-bit drivers for 32-bit applications (such as Wine).
         driSupport = true;    # Enables Vulkan .
         driSupport32Bit = true; 
-        }; }; }; );
+        }; }; } );
 
     ( mkIf cfg.nvidia-drivers.enable {
 
@@ -41,7 +41,7 @@ in {
 
         nvidiaSettings = true;    # Enables the nvidia settings menu.
         package = config.boot.kernelPackages.nvidiaPackages.latest;   # Use most recent Nvidia drivers.
-        }; }; ); ];
+        }; } ); ];
 
 
 }   # End of file.
