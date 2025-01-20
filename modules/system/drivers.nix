@@ -12,7 +12,7 @@ in {
 
 #   ..... CONFIG .....
   config = mkMerge [
-    (mkIf cfg.drivers.enable = {
+    (mkIf cfg.drivers.enable {
     hardware = {
       enableAllFirmware = true;   # Enables firmware with a licence allowing redistribution.
       graphics = {
@@ -22,7 +22,7 @@ in {
         driSupport32Bit = true; 
         }; }; }; );
 
-    ( mkIf cfg.nvidia-drivers.enable = {
+    ( mkIf cfg.nvidia-drivers.enable {
 
       nixpkgs.config.allowUnfree = true;
       services.xserver.videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
