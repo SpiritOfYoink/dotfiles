@@ -3,7 +3,7 @@ How are you here? This is designed for one of four people, and three of them don
 
 # TO INSTALL:
 
-Step 1: Install NixOS using a graphical installer. Select no desktop when prompted. Do not restart.
+Step 1: Install NixOS using a graphical installer. Choose a temporary password, login automatically, and reuse password for administrator. Select no desktop when prompted.
 
 Step 2: Before rebooting, use the live CD to navigate to the new volume. Under /etc/nixos, edit configuration.nix.
 
