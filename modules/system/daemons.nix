@@ -38,10 +38,10 @@ in {
       }; };
 
 #   ..... SERVICES .....
-    services = {
+      printing.enable = true;   # CUPS printing service.
+      libinput.enable = true;   # Enables mouse input.
       xserver = {
-        printing.enable = true;   # CUPS printing service.
-        libinput.enable = true;   # Enables mouse input.
+
         pipewire = {   # Enables Pipewire audio drivers.
           enable = true;
           audio.enable = true;    # Makes Pipewire the default audio handler.
@@ -49,7 +49,7 @@ in {
           alsa.Support32Bit = true;
           jack.enable = true;   # Enables Jack audio emulation. 
           pulse.enable = true;    # Enables PulseAudio server emulation.
-          }; }; };
+          }; };
 
 
 }   # End of file.
