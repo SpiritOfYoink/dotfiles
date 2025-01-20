@@ -41,8 +41,10 @@ in {
 
         #   ..... STARTUP: .....
 
-        spawn-at-startup = "eww";   # Taskbar and notifications.
-        spawn-at-startup = "fuzzel";    # Program launcher.
+        spawn-at-startup = [
+          "eww";   # Taskbar and notifications.
+          "eww";   # Taskbar and notifications.
+          ];
 
 
         #   ..... LAYOUT .....
