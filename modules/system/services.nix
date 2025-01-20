@@ -35,7 +35,7 @@ in {
       bluetooth.enable = true;
       bluetooth.powerOnBoot = true;   # Powers up the default Bluetooth controller on boot.
       hardware.pulseaudio.enable = false;   # Disables the old PulseAudio drivers.
-      }; }; };
+      }; };
 
 #   ..... SERVICES .....
     services = {
@@ -50,7 +50,7 @@ in {
           alsa.Support32Bit = true;
           jack.enable = true;   # Enables Jack audio emulation. 
           pulse.enable = true;    # Enables PulseAudio server emulation.
-          }; };
+          }; }; };
 
 
 }   # End of file.
