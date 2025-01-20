@@ -11,14 +11,14 @@ in {
 #   ..... CONFIG .....
   config = mkIf cfg.services.enable {
 
-    nix.gc {    # Manages garbage collection.
+    nix.gc = {    # Manages garbage collection.
       enable = true; 
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than-15d";
       };
 
-    nix.optimise {    # Manages store optimisation.
+    nix.optimise = {    # Manages store optimisation.
       enable = true;
       automatic = true;
       dates = "05:30";
