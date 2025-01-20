@@ -8,7 +8,7 @@ Step 1: Install NixOS using a graphical installer. Select no desktop when prompt
 
 Step 2: Run the following command in the terminal:
 
-    sudo nix shell nixpkgs#git --extra-experimental-features nix-command --extra-experiemental-features flakes
+    sudo nix shell nixpkgs#git --extra-experimental-features "nix-command flakes"
 
 Step 3: Next, run:
 
