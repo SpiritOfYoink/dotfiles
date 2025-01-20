@@ -3,7 +3,7 @@ How are you here? This is designed for one of four people, and three of them don
 
 # TO INSTALL:
 
-Step one: Install NixOS using a graphical installer. Select no GUI when prompted.
+Step one: Install NixOS using a graphical installer. Select no desktop when prompted.
 
 Step two: Run the following terminal command, replacing <my-system> with your user or host. Current hosts are yoink, dame, mac, & hamster.
 
