@@ -72,28 +72,22 @@
 
 #   ..... USER SETUP .....
 
-  networking.hostName = ${host};    # What the computer is called on your network.
+  networking.hostName = "${host}";    # What the computer is called on your network.
 
-  users.users.${user} = {   # Defines the user account.
+  users.users."${user}" = {   # Defines the user account.
       isNormalUser = true;
-      description = ${fullname};
+      description = "${fullname}";
       extraGroups = [ "wheel"  "networkmanager"];
       initialPassword = "correcthorsebatterystaple";    # TODO: Be sure to change this to the secrets below, when you get that set up.
 
-  #users.users."${user}"".HashedPassword = mkOption { ${password}; };   # This is the user's password.
-  #users.users."root".HashedPassword = mkOption { ${rootpw}; };   # This is the root user's password.
+  #users.users."${user}"".HashedPassword = mkOption { "/home/${user}/hosts/${user}/secrets/user-secrets" };   # This is the user's password.
+  #users.users."root".HashedPassword = mkOption { "/home/${user}/hosts/${user}/secrets/root-secrets"; };   # This is the root user's password.
 
   users.mutableUsers = false;   # Users and passwords cannot be changed ourside of this file.
   };
-    
-
-
-
-
 
 
 #   ..... PROGRAMS .....
-
 
 programs = {    # *Most* programs are managed through home-manager. See home-manager.nix for the majority of programs.
 

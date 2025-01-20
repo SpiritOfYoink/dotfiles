@@ -23,7 +23,7 @@ in {
           wayland = true;
           settings = {
             AutomaticLoginEnable = true;
-            AutomaticLogin = ${user};
+            AutomaticLogin = "${user}";
             }; }; };
       };
 
