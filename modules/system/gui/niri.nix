@@ -35,7 +35,7 @@ in {
           "Mod+Equals".action = set-column-width "-10%";
           "Alt+Ctrl+Shift+H".action = spawn "bitwarden";
           "SysRq".action = screenshot-window;
-          <name>.repeat = false;
+          repeat = false;
           };
 
 
