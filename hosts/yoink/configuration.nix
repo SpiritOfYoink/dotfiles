@@ -63,7 +63,7 @@
     device = "${server}";
     fsType = "zfs";
     options = [
-      let {automount_opts = "x-systemd.automount,noauto,user,users"};
+      let [automount_opts = "x-systemd.automount,noauto,user,users";]
       in ["${automount_opts},credentials= "];   # TODO: setup secret credentials for the server.
       ]; };
 
