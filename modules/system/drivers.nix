@@ -11,8 +11,9 @@ in {
     };
 
 #   ..... CONFIG .....
-  config = mkIf cfg.drivers.enable (mkMerge [
+  config = {
 
+  (mkIf (cfg.drivers.enable = true)
     hardware = {
       enableAllFirmware = true;   # Enables firmware with a licence allowing redistribution.
       graphics = {
@@ -20,9 +21,9 @@ in {
         enable32Bit = true;   # Enables 32-bit drivers for 32-bit applications (such as Wine).
         driSupport = true;    # Enables Vulkan .
         driSupport32Bit = true; 
-        }; };
+        }; }; );
 
-    (mkIf cfg.nvidia-drivers.enable = {
+    (mkIf (cfg.nvidia-drivers.enable = true && cfg.drivers.enable = true) 
 
     nixpkgs.config.allowUnfree = true;
     services.xserver.videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
@@ -41,6 +42,7 @@ in {
 
       nvidiaSettings = true;    # Enables the nvidia settings menu.
       package = config.boot.kernelPackages.nvidiaPackages.latest;   # Use most recent Nvidia drivers.
-      }; }; ); ]; );
+      }; ); };
+      
 
 }   # End of file.
