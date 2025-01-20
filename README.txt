@@ -3,28 +3,31 @@ How are you here? This is designed for one of four people, and three of them don
 
 # TO INSTALL:
 
-Step 1: Install NixOS using a graphical installer. Select no desktop when prompted.
+Step 1: Install NixOS using a graphical installer. Select no desktop when prompted. Do not restart.
 
+Step 2: Before rebooting, use the live CD to navigate to the new volume. Under /etc/nixos, edit configuration.nix.
 
-Step 2: Run the following command in the terminal:
+Step 3: Add the following lines below the imports = []; section:
 
-    sudo nix shell nixpkgs#git --extra-experimental-features "nix-command flakes"
+    programs.git.enable = true;
+    nix.settings.experimental-features = "nix-command flakes";
 
-Step 3: Next, run:
+      then exit and save.
 
-    sudo mkdir /home/dotfiles && sudo chown 760 /home/dotfiles && cd /home/dotfiles
+Step 4: Next, navigate to /home on the same volume. Right click and select "open in terminal."
 
+Step 3: Run:
+    sudo git clone https://github.com/spiritofyoink/dotfiles
 
-Step 4: Run the following terminal command, replacing <my-system> with your user or host. Current hosts are yoink, dame, mac, & hamster.
+Step 4: Reboot.
 
-    git clone github:spiritofyoink/dotfiles#<my-system>
+Step 5: After logging back in, run:
+    cd /home/dotfiles
 
+Step 6: Run the following terminal command, replacing <my-system> with your user or host. Current hosts are yoink, dame, mac, & hamster.
 
-Step 5: Run:
+    sudo nixos-rebuild switch --flake github:spiritofyoink/dotfiles#<my-system>
 
-    sudo nixos-rebuild switch --flake
-
-Step 5: Reboot.
 
 
 Note: from then on, you simply need to use 'rebuild' to rebuild and switch the system configuration.
