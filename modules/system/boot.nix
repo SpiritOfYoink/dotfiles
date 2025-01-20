@@ -9,8 +9,6 @@ in {
 
 #   ..... CONFIG .....
 
-  boot.enable = true;
-
   config = mkIf cfg.boot.enable {
     boot = { 
       loader = {
@@ -19,7 +17,7 @@ in {
         systemd-boot.configurationLimit = 10;   # Limits the number of previous configurations stored in the bootloader. Increase if you may need to go further back in time.
         }; };
 
-  config = lib.mkIF cfg.boot.enable && config.modules.system.nvidia-drivers.enable {
+  config = mkIF cfg.boot.enable && config.modules.system.nvidia-drivers.enable {
     boot.blacklistedKernelModules = [ "nouveau"];    # Prevents the open-source drivers from loading.
     }; };
 

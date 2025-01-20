@@ -1,4 +1,9 @@
-{pkgs, lib, config, ... }: with lib; {
+{pkgs, lib, config, ... }: with lib;
+
+let
+  cfg = config.modules;    # Shorter name to access final settings. cfg is a typical convention.
+in {
+
 
 #   ..... SUBMODULES .....
 imports = [
@@ -8,10 +13,10 @@ imports = [
   ]; 
 
 #   ..... DEFAULT SETTINGS .....
-    home-manager.enable = mkDefault false;
+    cfg.home-manager.enable = mkDefault false;
 
-    programs.enable = mkDefault true;
+    cfg.programs.enable = mkDefault true;
 
-    system.enable = mkDefault true;
+    cfg.system.enable = mkDefault true;
 
 }   # End of file.
