@@ -60,7 +60,7 @@
 
   services.gvfs.enable = true;    # Enables the GVFS daemon to allow GTK file-managers access to brouse samba shares.
   fileSystems."/mnt/nas-storage" = {    # Accesses network-attached storage.
-    device = ${server};
+    device = "${server}";
     fsType = "zfs";
     options = [
       let
