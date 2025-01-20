@@ -8,7 +8,6 @@ in {
 #   ..... SUBMODULES .....
 imports = [
  # ./home-manager
- # ./programs
   ./system
   ]; 
 
