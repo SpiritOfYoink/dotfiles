@@ -2,9 +2,9 @@
 
 #   ..... SUBMODULES .....
 imports = [
- # ./home-manager/
- # ./programs/
-  ./system/
+ # ./home-manager
+ # ./programs
+  ./system
   ]; 
 
 #   ..... DEFAULT SETTINGS .....

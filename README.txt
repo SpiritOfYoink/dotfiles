@@ -12,23 +12,22 @@ Step 2: Reboot, removing the installation media.
 
 
 Step 3: In the terminal prompt you're presented with, run the following:
-
     export NIX_CONFIG="experimental-features = nix-command flakes"
 
 
 Step 4: Run:
-
     nix shell nixpkgs#git --command nix flake clone github:spiritofyoink/dotfiles --dest ~/dotfiles
 
 
-Step 5: Run the following, replacing <my-system> with the host you chose above. (yoink, dame, mac, or hamster).
-
-    nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake ~/dotfiles#<my-system>
-
-
-Step 6: Reboot. You should now be in NixOS.
+Step 5: Run:
+    sudo mv /etc/nixos/hardware-configuration.nix /home/<host>/dotfiles/hosts/<host>/hardware-configuration.nix
 
 
+Step 6: Run the following, replacing <host> with the host you chose above. (yoink, dame, mac, or hamster).
+    nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake '/home/<host>/dotfiles#<host>
+
+
+Step 7: Reboot. You should now be in NixOS.
 
 
 
