@@ -38,7 +38,7 @@ in {
       }; };
 
 #   ..... SERVICES .....
-    services = {
+    with services = {
       printing.enable = true;   # CUPS printing service.
       libinput.enable = true;   # Enables mouse input.
 
