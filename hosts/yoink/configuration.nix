@@ -32,7 +32,7 @@
     programs.gamemode.enable = true;    # TODO: See if this needs more setting up.
 
     nix = {
-      settings.experimental-features = ["nix-command flakes";];   # Enables the Flakes update system command in conjunction with a rebuild.
+      settings.experimental-features = ["nix-command flakes"];   # Enables the Flakes update system command in conjunction with a rebuild.
       environment.systemPackages = with pkgs; [ git ];    # Flakes clones its dependencies through the git command, so it must be at the top of the list.
       checkConfig = true;
       checkAllErrors = true;

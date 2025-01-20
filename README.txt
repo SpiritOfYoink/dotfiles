@@ -32,11 +32,11 @@ Step 6: Reboot. You should now be in NixOS.
 
 
 
-Note: from now on, you simply need to use 'rebuild' to rebuild and switch the system configuration.
+Note: from now on, you simply need to use 'rebuild' to rebuild and switch the system configuration. If this is still in testing and the flake hasn't loaded, use: sudo nixos-rebuild switch --flake '/home/<user>/dotfiles#<user>'
 
 Note: if you're debugging, include the following lines in /etc/nixos/configuration.nix
 
     programs.git.enable = true;
     nix.settings.experimental-features = "nix-command flakes";
 
-Note: If you need to refresh the evaluation cache, run sudo rm -rf / <location of nixos tarball
+Note: If you need to refresh the evaluation cache, run sudo rm -rf / <location of nixos tarball>
