@@ -2,8 +2,8 @@
 
 #   ..... SUBMODULES .....
 imports = [
-  ./home-manager/
-  ./programs/
+ # ./home-manager/
+ # ./programs/
   ./system/
   ]; 
 

@@ -5,11 +5,11 @@ How are you here? This is designed for one of four people, and three of them don
 
 Step one: Install NixOS using a graphical installer. Select no desktop when prompted.
 
-sudo mkdir /home/dotfiles && sudo chown 760 /home/dotfiles && cd /home/dotfiles
+    sudo mkdir /home/dotfiles && sudo chown 760 /home/dotfiles && cd /home/dotfiles
 
 Step three: Run the following terminal command, replacing <my-system> with your user or host. Current hosts are yoink, dame, mac, & hamster.
 
-        sudo nixos-rebuild switch --flake github:SpiritOfYoink/dotfiles#<my-system>
+    sudo nixos-rebuild switch --flake github:SpiritOfYoink/dotfiles#<my-system>
 
 
 Note: from then on, you simply need to use 'rebuild' to rebuild and switch the system configuration.
