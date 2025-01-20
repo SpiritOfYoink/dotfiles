@@ -1,32 +1,13 @@
 How are you here? This is designed for one of four people, and three of them don't know how to use Nix.
 
-(depricated) installation:
 
-1) Install NixOS (no GUI needed), and run the following terminal commands:
+# TO INSTALL:
 
-2) cd /etc/nixos && sudo nano configuration.nix
+Step one: Install NixOS using a graphical installer. Select no GUI when prompted.
 
-3) In nano, add the following lines below imports:
+Step two: Run the following terminal command, replacing <my-system> with your user or host. Current hosts are yoink, dame, mac, & hamster.
 
-    programs.git.enable = true;
-    nix.settings.experimental-features = "nix-command flakes";
-
-4) Exit nano with Ctl+X, Y, Enter.
-
-5) sudo nixos-rebuild switch
-
-6) cd /
-
-6) sudo git clone https://github.com/SpiritOfYoink/dotfiles /home/dotfiles && cd /home/dotfiles
-
-7) sudo nano /home/dotfiles/flake.nix
-
-8) Change the variables (under the VARIABLES header) to appropriate values for your computer.
-
-9) Exit nano with Ctl+X, Y, Enter.
-
-10) sudo nixos-rebuild switch --flake /home/dotfiles
+        sudo nixos-rebuild switch --flake github:SpiritOfYoink/dotfiles#<my-system>
 
 
 Note: from then on, you simply need to use 'rebuild' to rebuild and switch the system configuration.
-
