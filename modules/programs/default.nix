@@ -1,4 +1,4 @@
-{pkgs, lib, config ... }: with lib; {
+{pkgs, lib, config, ... }: with lib; {
 
 #   ..... SUBMODULES .....
 imports = [

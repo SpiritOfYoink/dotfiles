@@ -1,4 +1,4 @@
-{pkgs, lib, config ... }:{
+{pkgs, lib, config, ... }:{
 
 options = {     # Defines new NixOS options. Call with config.desktopapps =
 desktopapps.enable = lib.mkEnableOption "enables desktopapps"; 
