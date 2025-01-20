@@ -17,10 +17,9 @@ imports = [
 
     cfg.boot.enable = mkDefault true;
 
-    cfg.drivers = [
-      enable = mkDefault true;
-      nvidia-drivers.enable = mkDefault true;
-      ];
+    cfg.drivers.enable = mkDefault true;
+    cfg.drivers.nvidia-drivers.enable = mkDefault true;
+
 
     cfg.services.enable = mkDefault true;
     
