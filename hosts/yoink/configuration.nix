@@ -103,6 +103,26 @@
     users.mutableUsers = false;   # Users and passwords cannot be changed ourside of this file.
     };
 
+#   ..... HOME MANAGER .....
+
+    home.username = "${user}";
+    home.homeDirectory = "/home/${user}/dotfiles/modules/home-manager";
+    home.stateVersion = "24.11";    # This is used for backwards compatiblity. Don't change this.
+    programs.home-manager.enable = true;    # Let Home Manager install and manage itself.
+
+
+
+
+    fullname = "The Spirit of Yoink!";    # What's the user called?
+    host = "Ncase M2";    # What's the computer called?
+
+    lib = nixpkgs.lib;    # No need to change this.
+
+    github = "https://github.com/SpiritOfYoink/dotfiles";   # Change this to the github link for your repository, if you clone this.
+    server = "//192.168.1.70/NAS_Storage";    # Where's your network storage attached? (SMB share.)
+
+    #password = ;        # What is the user's secret file?
+    #rootpw = ;      # What is the root user's secret file?
 
 #   ..... PROGRAMS .....
 
