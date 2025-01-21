@@ -31,15 +31,14 @@
 
       nvidiaSettings = true;    # Enables the nvidia settings menu.
 
+      encode.enable = true; 
+
       powerManagement = {
         enable = true;   # *Can* cause sleep/suspend to fail. Enable in case of graphical corruption or system crashes on suspend / resume.
         finegrained = false;    # Enable if the above setting gets enabled.
         };
 
-#      forceFullCompositionPipeline = true; 
-
-#       nvidia-persistenced = true;    # Allows the toggling of 'persistence mode' in nvidia management software. May only be for laptops?
-#       dynamicBoost.enable = true;    # Allows the GPU clock speed to boost as normal. May only be for laptops?
+#       forceFullCompositionPipeline = true;   # Can sometimes fix screen tearing issues, but may reduce the performance of some OpenGL applciations.
       }; }
 
 }   # End of file.
