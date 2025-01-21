@@ -45,13 +45,59 @@
 
     # BROWSERS
     opera
-    termite.browser = "opera"   # Allows URLs to be clicked on to open them in the browser.
-    termite.clickableUrl = true
 
      # Alias allowing the shell command 'rebuild' to do a full rebuild from github.
     (writeShellScriptBin "rebuild.sh" ''
       cd "/home/${dotfiles}"
       sudo nixos-rebuild switch --flake '${github}'
       '') ];
+
+
+  home.programs = {
+
+    vscode = {    # VS Code   -- Source code editor.
+      enable = true;
+      enableUpdateCheck = false;    # It'll get updated along with the rest of the system.
+      enableExtensionUpdateCheck = true;
+      mutableExtensionsDir = false;
+      extensions = with pkgs.vscode-extensions; [   # Add the VS Code extensions you use here.
+        vscode-nix-ide    # Adds Nix language support.
+        ];
+      userSettings ={   #
+        "nix.enableLanguageServer": true;   # Adds Nil, an incremental analysis assistant for Nix.
+        "nix.serverPath": "nil";
+        "nix.serverSettings": {
+          "nil": {
+            "diagnostics": {
+              "ignored": ["unused_binding", "unused_with"],
+              },
+            "formatting": {
+              "command": ["nixpkgs-fmt"],;
+              };
+            };
+          };
+        };
+      };    # End of VS Code.
+
+    git = {   # git package manager.
+      enable = true;
+      userName = "thespiritofyoink@gmail.com";
+      userEmail = "thespiritofyoink@gmail.com";
+      };
+    
+    ghostty = {   # Terminal.
+      enable = true;
+      };
+
+    };
+
+
+  home.file = {   # Home Manager is pretty good at managing dotfiles. The primary way to manage plain files is through 'home.file'.
+    };
+
+
+  home.sessionVariables = {   # Home Manager can also manage your environment variables through 'home.sessionVariables'. 
+    EDITOR = "vscode";     # Sets the default source-code editor.
+    };
 
 }   # End of file.
