@@ -10,8 +10,8 @@
       graphics = {
         enable = true;    # Enables OpenGL.
         enable32Bit = true;   # Enables 32-bit drivers for 32-bit applications (such as Wine).
-        driSupport = true;    # Enables Vulkan .
-        driSupport32Bit = true; 
+        extraPackages = true;    # Enables Vulkan .
+
         }; }; };
 
 }   # End of file.
