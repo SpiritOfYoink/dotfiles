@@ -19,6 +19,6 @@ imports = [
     cfg.daemons.enable = mkDefault true;
 
     cfg.drivers.enable = mkDefault true;
-    cfg.drivers.nvidia-drivers.enable = mkDefault true;
+    cfg.nvidia-drivers.enable = mkDefault true;
 
 }   # End of file.
