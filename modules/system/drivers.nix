@@ -1,7 +1,7 @@
 {pkgs, lib, config, ... }: with lib;
 
 let
-  cfg = dotfiles.modules.system;    # Shorter name to access final settings. cfg is a typical convention.
+  cfg = config.system;    # Shorter name to access final settings. cfg is a typical convention.
 in {
 
 #   ..... CALLABLE OPTIONS .....
