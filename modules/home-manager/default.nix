@@ -66,15 +66,15 @@
         vscode-nix-ide    # Adds Nix language support.
         ];
       userSettings ={   #
-        "nix.enableLanguageServer": true;   # Adds Nil, an incremental analysis assistant for Nix.
-        "nix.serverPath": "nixd";
-        };
-      };    # End of VS Code.
+        "nix.enableLanguageServer": true,   # Adds Nil, an incremental analysis assistant for Nix.
+        "nix.serverPath": "nixd",
+        "nix.serverSettings": { ... }
+        }; };    # End of VS Code.
 
     git = {   # git package manager.
-      enable = true;
-      userName = "thespiritofyoink@gmail.com";
-      userEmail = "thespiritofyoink@gmail.com";
+      enable = true,
+      userName = "thespiritofyoink@gmail.com",
+      userEmail = "thespiritofyoink@gmail.com",
       };
     
     ghostty = {   # Terminal.
