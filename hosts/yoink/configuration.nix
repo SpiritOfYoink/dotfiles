@@ -24,6 +24,7 @@
 
 #   ..... MODULE OPTIONS .....
 
+    nvidia-drivers = true; 
     system.enable = true;
     home-manager.enable = false;
     programs.enable = true;

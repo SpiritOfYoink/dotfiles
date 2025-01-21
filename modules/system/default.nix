@@ -15,6 +15,6 @@ imports = [
     daemons.enable = mkDefault true;
 
     drivers.enable = mkDefault true;
-    nvidia-drivers.enable = mkDefault true;
+    nvidia-drivers.enable = mkDefault false;
 
 }   # End of file.
