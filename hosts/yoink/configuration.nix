@@ -18,6 +18,7 @@
     imports = [   # You can import other NixOS modules here.
       ./hardware-configuration.nix
       ../../modules
+      ../../modules/home-manager
       ];
 
 
