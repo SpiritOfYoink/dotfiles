@@ -5,7 +5,7 @@
     fullname = "The Spirit of Yoink!";    # What's the user called?
     host = "Ncase M2";    # What's the computer called?
 
-    pkgs = "nixpkgs.legacyPackages.x86_64-linux";   # If 'system' changes, change this!
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;   # If 'system' changes, change this!
     lib = nixpkgs.lib;    # No need to change this.
 
     github = "https://github.com/SpiritOfYoink/dotfiles";   # Change this to the github link for your repository, if you clone this.
