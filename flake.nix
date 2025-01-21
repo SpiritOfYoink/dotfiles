@@ -5,8 +5,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";       # Nixpkgs.
 
-   # home-manager.url = "github:nix-community/home-manager";    # Home manager.
-   # home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";    # Home manager.
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
  
    # nix-colors.url = "github:misterio77/nix-colors";    # Nix colors.
 
@@ -27,6 +27,7 @@
 #   ..... OUTPUTS .....
   outputs = {self, nixpkgs, ... }@inputs:{
     system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
     #ISO = self.nixosConfigurations.iso.config.system.build.isoImage;
     #homeManagerModules.default = ./modules/home-manager;
 
