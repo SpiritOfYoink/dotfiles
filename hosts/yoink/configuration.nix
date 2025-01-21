@@ -27,10 +27,10 @@
     nvidia-drivers = true; 
     system.enable = true;
     home-manager.enable = false;
-    programs.enable = true;
-    office.enable = true;
-    photoshop.enable = true;
-    games.enable = true; 
+    #desktopapps.enable = true;
+    #office.enable = true;
+    #photoshop.enable = true;
+    #games.enable = true; 
 
 
 #   ..... CONFIG .....
