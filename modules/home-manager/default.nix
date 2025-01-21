@@ -64,7 +64,7 @@
         vscode-nix-ide    # Adds Nix language support.
         ];
       userSettings ={   #
-        "nix.enableLanguageServer": true;   # Adds Nil, an incremental analysis assistant for Nix.
+        "nix.enableLanguageServer" = true;   # Adds Nil, an incremental analysis assistant for Nix.
         "nix.serverPath": "nil";
         "nix.serverSettings": {
           "nil": {
