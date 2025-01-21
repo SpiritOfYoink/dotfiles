@@ -31,6 +31,8 @@
     java    # Language required for some Steam games.
     wget    # Web server file retrieval.
     curl    # Data transfer through network protocols.
+    nixd    # Nix language server
+    vscode-nix-ide    # Patches VScode with nix language support.
    
     # DESKTOP APPS
     spotify   # Spotify music streamer.
@@ -64,18 +66,8 @@
         vscode-nix-ide    # Adds Nix language support.
         ];
       userSettings ={   #
-        "nix.enableLanguageServer" = true;   # Adds Nil, an incremental analysis assistant for Nix.
-        "nix.serverPath": "nil";
-        "nix.serverSettings": {
-          "nil": {
-            "diagnostics": {
-              "ignored": ["unused_binding", "unused_with"],
-              },
-            "formatting": {
-              "command": ["nixpkgs-fmt"],;
-              };
-            };
-          };
+        "nix.enableLanguageServer": true;   # Adds Nil, an incremental analysis assistant for Nix.
+        "nix.serverPath": "nixd";
         };
       };    # End of VS Code.
 
