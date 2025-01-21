@@ -7,20 +7,20 @@
 
     home-manager.url = "github:nix-community/home-manager";    # Home manager.
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+   # wsl.url = "github:nix-community/NixOS-WSL";    # Used for Windows Subsystem for Linux compatibility
  
    # nix-colors.url = "github:misterio77/nix-colors";    # Nix colors.
 
    # sops-nix.url = "github:mic92/sops-nix";   # Secret provisioning for password security.
-   # sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    
+
    # nix-gl.url = "github:nix-community/nixgl";    # Wrapper to fix launching openGL games.
-   # nix-gl.inputs.nixpkgs.follows = "nixpkgs";
+ 
   
     niri-stable.url = "github:YaLTeR/niri/v25.01";    # Niri window manager.
     niri-stable.inputs.nixpkgs.follows = "nixpkgs";
 
    # xwayland-satellite-stable.url = "github:Supreeeme/xwayland-satellite/v0.5";   # Allows Niri to hook into wayland.
-   # xwayland-satellite-stable.inputs.nixpkgs.follows = "nixpkgs";
     };
 
 
