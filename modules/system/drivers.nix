@@ -18,7 +18,7 @@
         driSupport32Bit = true; 
         }; }; } )
 
-    ( mkIf nvidia-drivers.enable {
+    ( mkIf nvidia-drivers.enable true {
 
       nixpkgs.config.allowUnfree = true;
       services.xserver.videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
