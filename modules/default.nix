@@ -3,12 +3,12 @@
 
 #   ..... SUBMODULES .....
 imports = [
- # ./home-manager
+ ./home-manager
   ./system
   ]; 
 
 #   ..... DEFAULT SETTINGS .....
-#    home-manager.enable = mkDefault false;
+    home-manager.enable = mkDefault false;
 
     system.enable = mkDefault true;
 
