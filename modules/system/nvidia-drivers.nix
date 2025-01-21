@@ -9,8 +9,11 @@
   config = mkIf config.nvidia-drivers.enable {
     boot.blacklistedKernelModules = [ "nouveau"];    # Prevents the open-source drivers from loading.
 
-    nixpkgs.config.allowUnfree = true;    # Allows unfree software. Required for nvidia drivers.
-
+    nixpkgs.config = {
+      allowUnfree = true;    # Allows unfree software. Required for nvidia drivers.
+      nvidia.acceptLicense = true;   # Accepts Nvidia's terms of service.
+      };
+  
     package = config.boot.kernelPackages.nvidiaPackages.latest;   # Use most recent Nvidia drivers.
 
     services.xserver.videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
