@@ -61,18 +61,18 @@
   services.gvfs.enable = true;    # Enables the GVFS daemon to allow GTK file-managers access to brouse samba shares.
 
     fileSystems."/mnt/nas-storage" = {
-      device = "${server}";
+      device = "${server}";   # The target to connect to.
       fsType = "cifs";
       options = [
         "credentials=/home/${user}/hosts/${user}/secrets/smb-secrets"
         "x-systemd.automount"
+        "x-systemd.requires=network-online.target"    # If you have issues because the target isn't there, remove this line and the next.
+        "x-systemd.after=network-online.target"
         "x-systemd.idle-timeout=60"
         "x-systemd.device-timeout=5s"
-        "x-systemd.mount-timeout=5s,"   # These lines prevent the system hanging if the network changes..
-        "rw" "uid=${user}" "gid=1000"    # Sends the 
-
-          
-          
+        "x-systemd.mount-timeout=5s,"   # These lines prevent the system hanging if the target fails to reply.
+        "rw" "uid=${user}" "gid=1000"    # Sends the user's name and group.
+        "vers=3.02"
           ]; };
 
 
