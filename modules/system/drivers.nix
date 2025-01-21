@@ -4,7 +4,7 @@
   options = { drivers.enable = mkEnableOption "Enables drivers. You probably want these."; };
 
 #   ..... CONFIG .....
-  config = mkIf drivers.enable {
+  config = mkIf config.drivers.enable {
     hardware = {
       enableAllFirmware = true;   # Enables firmware with a licence allowing redistribution.
       graphics = {

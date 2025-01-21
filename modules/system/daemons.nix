@@ -4,7 +4,7 @@
   options = { daemons.enable = mkEnableOption "Enables various daemons."; };
 
 #   ..... CONFIG .....
-  config = mkIf daemons.enable {
+  config = mkIf config.daemons.enable {
 
     nix.gc = {    # Manages garbage collection.
       enable = true; 
