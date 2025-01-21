@@ -1,8 +1,4 @@
-{pkgs, lib, config, ... }: with lib;
-
-let
-  cfg = config.modules.system;    # Shorter name to access final settings. cfg is a typical convention.
-in {
+{pkgs, lib, config, ... }: with lib; {
 
 
 #   ..... SUBMODULES .....
@@ -14,11 +10,11 @@ imports = [
 
 #   ..... DEFAULT SETTINGS .....
 
-    cfg.boot.enable = mkDefault true;
+    boot.enable = mkDefault true;
 
-    cfg.daemons.enable = mkDefault true;
+    daemons.enable = mkDefault true;
 
-    cfg.drivers.enable = mkDefault true;
-    cfg.nvidia-drivers.enable = mkDefault true;
+    drivers.enable = mkDefault true;
+    nvidia-drivers.enable = mkDefault true;
 
 }   # End of file.

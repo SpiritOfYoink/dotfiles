@@ -1,15 +1,11 @@
-{pkgs, lib, config, ... }: with lib;
-
-let
-  cfg = config.modules.system;    # Shorter name to access final settings. cfg is a typical convention.
-in {
+{pkgs, lib, config, ... }: with lib; {
 
 #   ..... CALLABLE OPTIONS .....
   options = { boot.enable = mkEnableOption "Enables... booting."; };
 
 #   ..... CONFIG .....
 
-  config = mkIf cfg.boot.enable {
+  config = mkIf boot.enable {
     boot = { 
       loader = {
         systemd-boot.enable = true;   # Enables bootloader. DO NOT TOUCH.
@@ -17,7 +13,7 @@ in {
         systemd-boot.configurationLimit = 10;   # Limits the number of previous configurations stored in the bootloader. Increase if you may need to go further back in time.
         }; };
 
-  config = mkIF cfg.boot.enable && config.modules.system.nvidia-drivers.enable {
+  config = mkIF boot.enable && nvidia-drivers.enable {
     boot.blacklistedKernelModules = [ "nouveau"];    # Prevents the open-source drivers from loading.
     }; };
 

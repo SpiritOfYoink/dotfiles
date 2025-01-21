@@ -1,14 +1,10 @@
-{pkgs, lib, config, ... }: with lib;
-
-let
-  cfg = config.modules.system;    # Shorter name to access final settings. cfg is a typical convention.
-in {
+{pkgs, lib, config, ... }: with lib; {
 
 #   ..... CALLABLE OPTIONS .....
   options = { daemons.enable = mkEnableOption "Enables various daemons."; };
 
 #   ..... CONFIG .....
-  config = mkIf cfg.daemons.enable {
+  config = mkIf daemons.enable {
 
     nix.gc = {    # Manages garbage collection.
       enable = true; 

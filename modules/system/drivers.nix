@@ -1,18 +1,14 @@
-{pkgs, lib, config, ... }: with lib;
-
-let
-  cfg = config.system;    # Shorter name to access final settings. cfg is a typical convention.
-in {
+{pkgs, lib, config, ... }: with lib; {
 
 #   ..... CALLABLE OPTIONS .....
   options = {
-    cfg.drivers.enable = mkEnableOption "Enables drivers. You probably want these.";
-    cfg.nvidia-drivers.enable = mkEnableOption "Enables Nvidia propriatary drivers.";
+    drivers.enable = mkEnableOption "Enables drivers. You probably want these.";
+    nvidia-drivers.enable = mkEnableOption "Enables Nvidia propriatary drivers.";
     };
 
 #   ..... CONFIG .....
   config = mkMerge [
-    (mkIf cfg.drivers.enable {
+    (mkIf drivers.enable {
     hardware = {
       enableAllFirmware = true;   # Enables firmware with a licence allowing redistribution.
       graphics = {
@@ -22,7 +18,7 @@ in {
         driSupport32Bit = true; 
         }; }; } )
 
-    ( mkIf cfg.nvidia-drivers.enable {
+    ( mkIf nvidia-drivers.enable {
 
       nixpkgs.config.allowUnfree = true;
       services.xserver.videoDrivers = ["nvidia"];   # Loads Nvidia driver for Xorg and Wayland.
