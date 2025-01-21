@@ -128,7 +128,7 @@
 
     programs = {    # *Most* programs are managed through home-manager. See home-manager.nix for the majority of programs.
 
-      steam = {   # Steam
+      steam = {   # Steam runs better if installed system-wide.
           enable = true;
           pkgs.steam.override.withJava = true;    # Allows for Java games.
 

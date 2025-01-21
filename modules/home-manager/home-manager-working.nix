@@ -60,33 +60,6 @@ myProgramBundle.enable = true;
     # stylix, and the font is "Consolas, 'Courier New', monospace"
 
 
-#   ..... PROGRAMS .....
-
-  home.packages = with pkgs; [  # The home.packages option allows you to install Nix packages into your environment.
-
-    eww   # ElKowar's Wacky Widgets, used for taskbar and notifications.
-    bitwarden-desktop   # Password Manager.
-    java    # Language required for some Steam games.
-    wget    # Web server file retrieval.
-    curl    # Data transfer through network protocols.
-    gfie    # Greenfish icon editor.
-    spotify   # Spotify music streamer.
-    discord   # Messaging and screencasting.
-    beeper    # Universal chat, including discord.
-    squirreldisk    # Disk space analysis tool.
-
-    opera    # Browser
-    termite.browser = "opera"   # Allows URLs to be clicked on to open them in the browser.
-    termite.clickableUrl = true
-
-  # Alias allowing the shell command 'rebuild' to do a full rebuild from github.
-    (pkgs.writeShellScriptBin "rebuild" ''
-      cd "${dotfiles}"
-      sudo nixos-rebuild switch --flake '${github}'
-      "
-      '')
-    ];
-
   home.programs = {
 
     vscode = {    # VS Code   -- Source code editor.
