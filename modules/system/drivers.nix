@@ -1,9 +1,7 @@
 {pkgs, lib, config, ... }: with lib; {
 
 #   ..... CALLABLE OPTIONS .....
-  options = {
-    drivers.enable = mkEnableOption "Enables drivers. You probably want these.";
-    };
+  options = { drivers.enable = mkEnableOption "Enables drivers. You probably want these."; };
 
 #   ..... CONFIG .....
   config = mkIf drivers.enable {
