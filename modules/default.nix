@@ -10,8 +10,6 @@ imports = [
 #   ..... DEFAULT SETTINGS .....
     home-manager.enable = mkDefault false;
 
-    programs.enable = mkDefault true;
-
     system.enable = mkDefault true;
 
 }   # End of file.
