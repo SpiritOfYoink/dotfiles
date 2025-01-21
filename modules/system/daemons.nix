@@ -38,6 +38,7 @@
       libinput.enable = true;   # Enables mouse input.
       printing.enable = true;   # CUPS printing service.
       xserver = {
+        enable = true; 
         pipewire = {   # Enables Pipewire audio drivers.
           enable = true;
           audio.enable = true;    # Makes Pipewire the default audio handler.

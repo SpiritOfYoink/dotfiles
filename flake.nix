@@ -27,6 +27,7 @@
 #   ..... OUTPUTS .....
   outputs = {self, nixpkgs, ... }@inputs:{
     system = "x86_64-linux";
+    nixpkgs.hostPlatform = ${system};
     #ISO = self.nixosConfigurations.iso.config.system.build.isoImage;
     #homeManagerModules.default = ./modules/home-manager;
 

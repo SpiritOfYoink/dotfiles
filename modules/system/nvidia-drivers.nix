@@ -27,14 +27,16 @@
 
     hardware.nvidia = {
       modesetting.enable = true;    # Modesetting is required to run wayland.
+      open = true;    # Uses nvidia's open-source modules (not drivers).
 
-      open = false;    # Uses the open-source modules (not drivers).
       nvidiaSettings = true;    # Enables the nvidia settings menu.
 
       powerManagement = {
         enable = true;   # *Can* cause sleep/suspend to fail. Enable in case of graphical corruption or system crashes on suspend / resume.
         finegrained = false;    # Enable if the above setting gets enabled.
         };
+
+#      forceFullCompositionPipeline = true; 
 
 #       nvidia-persistenced = true;    # Allows the toggling of 'persistence mode' in nvidia management software. May only be for laptops?
 #       dynamicBoost.enable = true;    # Allows the GPU clock speed to boost as normal. May only be for laptops?
