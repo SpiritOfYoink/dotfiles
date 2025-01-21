@@ -30,7 +30,7 @@
     hardware = {
       bluetooth.enable = true;
       bluetooth.powerOnBoot = true;   # Powers up the default Bluetooth controller on boot.
-      hardware.pulseaudio.enable = false;   # Disables the old PulseAudio drivers.
+      pulseaudio.enable = false;   # Disables the old PulseAudio drivers.
       };
 
 #   ..... SERVICES .....
