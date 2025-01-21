@@ -8,7 +8,7 @@ imports = [
   ]; 
 
 #   ..... DEFAULT SETTINGS .....
-    home-manager.enable = mkDefault false;
+#    home-manager.enable = mkDefault false;
 
     system.enable = mkDefault true;
 
