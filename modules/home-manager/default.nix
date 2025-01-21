@@ -67,8 +67,8 @@
         ];
       userSettings ={   #
         "nix.enableLanguageServer": true,   # Adds Nil, an incremental analysis assistant for Nix.
-        "nix.serverPath": "nixd",
-        "nix.serverSettings": { ... }
+        "nix"."serverPath": "nixd",
+        "nix"."serverSettings": { ... }
         }; };    # End of VS Code.
 
     git = {   # git package manager.
