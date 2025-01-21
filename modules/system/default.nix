@@ -10,7 +10,6 @@ imports = [
   ./boot.nix
   ./drivers.nix
   ./daemons.nix
-  ./gui
   ];
 
 #   ..... DEFAULT SETTINGS .....
