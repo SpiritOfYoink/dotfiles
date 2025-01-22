@@ -1,10 +1,10 @@
-How are you here? This is designed for one of four people, and three of them don't know how to use Nix.
+### *How are you here? This is designed for one of four people, and three of them don't know how to use Nix.*
 
 
-[Alt text](dotfiles/NixOS Configuration Map.png)
+/NixOS Configuration Map.png
 
 
-# TO INSTALL:
+## TO INSTALL:
 
 Step 1: Install NixOS using a graphical installer. For user, put your hostname. Current hosts are yoink, dame, mac, & hamster.
         Choose a temporary password, login automatically, and reuse password for administrator. Select no desktop when prompted.
