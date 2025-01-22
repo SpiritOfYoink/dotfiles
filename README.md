@@ -29,14 +29,14 @@
     nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake '/home/<host>/dotfiles#<host>'
 
 > [!IMPORTANT]
-> Note: Don't forget the closing apostrphe.
+> Don't forget the closing apostrphe!
 
 
 * Step 7: Reboot. You should now be in NixOS.
 
 
 > [!NOTE]
-> from now on, you simply need to use 'rebuild' to rebuild and switch the system configuration.
+> From now on, you simply need to use 'rebuild' to rebuild and switch the system configuration.
 
 
 If you're debugging, include the following lines in /etc/nixos/configuration.nix
