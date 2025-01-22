@@ -1,68 +1,53 @@
-{
-  description = "You don't need to mess with this. It controls software versioning on your system.";
+{  description = "Home Manager Configuration";
 
 #   ..... INPUTS .....
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";       # Nixpkgs.
-
     home-manager.url = "github:nix-community/home-manager";    # Home manager.
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
    # wsl.url = "github:nix-community/NixOS-WSL";    # Used for Windows Subsystem for Linux compatibility
- 
    # nix-colors.url = "github:misterio77/nix-colors";    # Nix colors.
-
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
       };
-
    # sops-nix.url = "github:mic92/sops-nix";   # Secret provisioning for password security.
-
    # nix-gl.url = "github:nix-community/nixgl";    # Wrapper to fix launching openGL games.
-
- 
     niri-stable.url = "github:YaLTeR/niri/v25.01";    # Niri window manager.
     niri-stable.inputs.nixpkgs.follows = "nixpkgs";
-
    # xwayland-satellite-stable.url = "github:Supreeeme/xwayland-satellite/v0.5";   # Allows Niri to hook into wayland.
     };
 
 
 #   ..... OUTPUTS .....
   outputs = {self, nixpkgs, home-manager, stylix, niri-stable, ... }@inputs:
+
     let
+      inherit (home-manager.lib) homeManagerConfiguration;
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-     in  {
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {allowUnfree = true; };
+        };
+
+    in  {
 
     environment.systemPackages = [    # These programs will be installed system-wide.
       pkgs.home-manager
       ];
 
-
 #   ..... HOST SETUPS .....
 
     homeConfigurations = {       
 
-      yoink = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home];
-
-      }
-      
-      
-       nixpkgs.lib.nixosSystem rec {   # THE SPIRIT OF YOINK
-        specialArgs = { inherit inputs; };   # The `specialArgs` parameter passes the non-default nixpkgs instances to other nix modules
-        modules = [ ./hosts/yoink/configuration.nix ./home-manager];
+      yoink = home-manager.lib.homeManagerConfiguration {   # THE SPIRIT OF YOINK
+        specialArgs = { inherit inputs; inherit pkgs; };   # The `specialArgs` parameter passes the non-default nixpkgs instances to other nix modules
+        config = { allowUnfree = true; };
+        modules = [ ./users/yoink ];
         };
 
-
-
-
-
-
+        };
 
  #     dame = nixpkgs.lib.nixosSystem rec {    # NO AIM DAME
  #       specialArgs = { inherit inputs; };
@@ -84,4 +69,4 @@
  #         modules = [ ./hosts/server/configuration.nix ./home-manager ];
  #         };
 
-    }; }; }   # End of file.
+    }; }   # End of file.
