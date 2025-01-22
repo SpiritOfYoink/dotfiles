@@ -1,7 +1,7 @@
 How are you here? This is designed for one of four people, and three of them don't know how to use Nix.
 
 
-![Alt text](NixOS Configuration Map.png)
+![Alt text](dotfiles/NixOS Configuration Map.png)
 
 
 # TO INSTALL:
