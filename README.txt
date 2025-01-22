@@ -1,7 +1,7 @@
 ### *How are you here? This is designed for one of four people, and three of them don't know how to use Nix.*
 
 
-![](nixos-configuration-map.jpg?raw=true)
+![Image](nixos-configuration-map.jpg?raw=true)
 
 ## TO INSTALL:
 
