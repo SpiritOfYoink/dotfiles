@@ -1,8 +1,7 @@
 ### *How are you here? This is designed for one of four people, and three of them don't know how to use Nix.*
 
 
-<img src="./nixos-configuration-map.jpg" alt="Configuration map">
-![Configuration map](./nixos-configuration-map.jpg)
+![Image](nixos-configuration-map.jpg?raw=true)
 
 ## TO INSTALL:
 
