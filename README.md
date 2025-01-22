@@ -7,9 +7,9 @@
 
 * Step 1: Install NixOS using a graphical installer. For user, select from: yoink, dame, mac, & hamster.
 
-Choose a temporary password, login automatically, and reuse password for administrator. Select no desktop when prompted.
+     Choose a temporary password, login automatically, and reuse password for administrator. Select no desktop when prompted.
 
-Finally, partition the hard drive you're installing NixOS to, with swap but no hibernate.
+     Finally, partition the hard drive you're installing NixOS to, with swap but no hibernate.
 
 
 * Step 2: Reboot, removing the installation media.
