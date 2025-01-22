@@ -12,11 +12,17 @@
  
    # nix-colors.url = "github:misterio77/nix-colors";    # Nix colors.
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      };
+
    # sops-nix.url = "github:mic92/sops-nix";   # Secret provisioning for password security.
 
    # nix-gl.url = "github:nix-community/nixgl";    # Wrapper to fix launching openGL games.
+
  
-  
     niri-stable.url = "github:YaLTeR/niri/v25.01";    # Niri window manager.
     niri-stable.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -25,44 +31,57 @@
 
 
 #   ..... OUTPUTS .....
-  outputs = {self, nixpkgs, ... }@inputs:{
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    #ISO = self.nixosConfigurations.iso.config.system.build.isoImage;
-    #homeManagerModules.default = ./modules/home-manager;
+  outputs = {self, nixpkgs, home-manager, stylix, niri-stable, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+     in  {
+
+    environment.systemPackages = [    # These programs will be installed system-wide.
+      pkgs.home-manager
+      ];
+
 
 #   ..... HOST SETUPS .....
 
-    nixosConfigurations = {       
+    homeConfigurations = {       
 
-      yoink = nixpkgs.lib.nixosSystem rec {   # THE SPIRIT OF YOINK
+      yoink = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./home];
+
+      }
+      
+      
+       nixpkgs.lib.nixosSystem rec {   # THE SPIRIT OF YOINK
         specialArgs = { inherit inputs; };   # The `specialArgs` parameter passes the non-default nixpkgs instances to other nix modules
-        modules = [ ./hosts/yoink/configuration.nix ];
+        modules = [ ./hosts/yoink/configuration.nix ./home-manager];
         };
+
+
+
+
+
+
 
  #     dame = nixpkgs.lib.nixosSystem rec {    # NO AIM DAME
  #       specialArgs = { inherit inputs; };
- #         modules = [ ./hosts/dame/configuration.nix ];
+ #         modules = [ ./hosts/dame/configuration.nix ./home-manager ];
  #         };
 
  #    mac = nixpkgs.lib.nixosSystem rec {   # MAC'N'CHEESE
  #       specialArgs = { inherit inputs; };
- #         modules = [ ./hosts/mac/configuration.nix ];
+ #         modules = [ ./hosts/mac/configuration.nix ./home-manager ];
  #         };
 
- #     su = nixpkgs.lib.nixosSystem rec {    # SU
+ #     hamster = nixpkgs.lib.nixosSystem rec {    # HAMSTER
  #       specialArgs = { inherit inputs; };
- #         modules = [ ./hosts/su/configuration.nix ];
+ #         modules = [ ./hosts/hamster/configuration.nix ./home-manager ];
  #         };
 
  #     server = nixpkgs.lib.nixosSystem rec {    # SERVER
  #       specialArgs = { inherit inputs; };
- #         modules = [ ./hosts/server/configuration.nix ];
+ #         modules = [ ./hosts/server/configuration.nix ./home-manager ];
  #         };
 
- #     iso = nixpkgs.lib.nixosSystem {   # For making a Nix installation USB.
- #       system = "x86_64-linux";
- #       specialArgs = { inherit inputs; };
- #       modules = [ ./hosts/iso/configuration.nix ];
- #       };  
     }; }; }   # End of file.
