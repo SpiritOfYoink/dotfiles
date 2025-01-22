@@ -1,7 +1,7 @@
 ### *How are you here? This is designed for one of four people, and three of them don't know how to use Nix.*
 
 
-<img src="nixos-configuration-map.jpg" alt="Configuration map">
+<img src="nixos-configuration-map.jpg" class="img-responsive" alt=""> </div>
 ![Configuration map](nixos-configuration-map.jpg)
 
 ## TO INSTALL:
