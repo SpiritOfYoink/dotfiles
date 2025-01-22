@@ -12,18 +12,22 @@
 
 
 * Step 3: In the terminal prompt you're presented with, run the following:
+* 
     ``` export NIX_CONFIG="experimental-features = nix-command flakes" ```
 
 
 * Step 4: Run:
+* 
     ``` nix shell nixpkgs#git --command nix flake clone github:spiritofyoink/dotfiles --dest ~/dotfiles ```
 
 
 * Step 5: Run:
+* 
      ``` sudo mv /etc/nixos/hardware-configuration.nix /home/<host>/dotfiles/hosts/<host>/hardware-configuration.nix ```
 
 
 * Step 6: Run the following, replacing ```<user>``` with the user you selected in step one. (yoink, dame, mac, or hamster)
+* 
      ``` nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake '/home/<user>/dotfiles#<user>' ```
 
 > [!IMPORTANT]
