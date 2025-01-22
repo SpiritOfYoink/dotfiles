@@ -43,6 +43,3 @@ If you're debugging, include the following lines in /etc/nixos/configuration.nix
 
     programs.git.enable = true;
     nix.settings.experimental-features = "nix-command flakes";
-
-> [!NOTE]
-> If you need to refresh the evaluation cache, run sudo rm -rf / <location of nixos tarball>
