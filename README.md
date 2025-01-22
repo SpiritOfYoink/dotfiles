@@ -5,30 +5,34 @@
 
 ## TO INSTALL:
 
-* Step 1: Install NixOS using a graphical installer. For user, select from: yoink, dame, mac, & hamster.
-
-     Choose a temporary password, login automatically, and reuse password for administrator. Select no desktop when prompted.
-
-     Finally, partition the hard drive you're installing NixOS to, with swap but no hibernate.
+* Step 1: Install NixOS using a graphical installer.
+  * For name and username, select from: yoink, dame, mac, & hamster. This will be your ``` <user> ``` in step 6.
+  * Choose a temporary password, and check both 'login automatically,' and 'reuse password for administrator.'
+  * Select 'no desktop' when prompted.
+  * Finally, partition the hard drive you're installing NixOS to, selecting the 'swap but no hibernate' option.
 
 
 * Step 2: Reboot, removing the installation media.
 
 
 * Step 3: In the terminal prompt you're presented with, run the following:
-    export NIX_CONFIG="experimental-features = nix-command flakes"
+ 
+    ``` export NIX_CONFIG="experimental-features = nix-command flakes" ```
 
 
 * Step 4: Run:
-    nix shell nixpkgs#git --command nix flake clone github:spiritofyoink/dotfiles --dest ~/dotfiles
+ 
+    ``` nix shell nixpkgs#git --command nix flake clone github:spiritofyoink/dotfiles --dest ~/dotfiles ```
 
 
 * Step 5: Run:
-    sudo mv /etc/nixos/hardware-configuration.nix /home/<host>/dotfiles/hosts/<host>/hardware-configuration.nix
+ 
+     ``` sudo mv /etc/nixos/hardware-configuration.nix /home/<host>/dotfiles/hosts/<host>/hardware-configuration.nix ```
 
 
-* Step 6: Run the following, replacing <host> with the host you chose above. (yoink, dame, mac, or hamster).
-    nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake '/home/<host>/dotfiles#<host>'
+* Step 6: Run the following, replacing ```<user>``` with the user you selected in step one. (yoink, dame, mac, or hamster)
+ 
+     ``` nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake '/home/<user>/dotfiles#<user>' ```
 
 > [!IMPORTANT]
 > Don't forget the closing apostrphe!
