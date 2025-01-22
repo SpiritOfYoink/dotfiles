@@ -2,7 +2,7 @@
 
 
 <img src="./nixos-configuration-map.jpg" alt="Configuration map">
-
+![Configuration map](./nixos-configuration-map.jpg)
 
 ## TO INSTALL:
 
