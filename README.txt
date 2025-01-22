@@ -1,7 +1,7 @@
 ### *How are you here? This is designed for one of four people, and three of them don't know how to use Nix.*
 
 
-![Configuration Map](./nixos-configuration-map.png)
+![Configuration Map](https://github.com/SpiritOfYoink/dotfiles/blob/bb4b44d8255eb04bba938e490785c795599bee58/nixos-configuration-map.png)
 
 
 ## TO INSTALL:
