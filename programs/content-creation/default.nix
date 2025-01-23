@@ -1,19 +1,44 @@
-{pkgs, lib, config, ... }:{
+{pkgs, lib, config, ... }: with lib; {
 
-options = {     # Defines new NixOS options. Call with config.desktopapps =
-desktopapps.enable = lib.mkEnableOption "enables desktopapps"; 
+#   ..... SUBMODULES .....
+imports = [
+  ./adobe
+  ./audacity.nix
+  ./blender.nix
+  ./davinci-resolve.nix
+  ./gimp.nix
+  ./kdenlive.nix
+  ./obs.nix
+  ];
 
-    };
+#   ..... DEFAULT SETTINGS .....
 
-config = lib.mkIf config.desktopapps.enable {      # These values will be enabled as long as desktopapps.enable is set to true.
-  users."${user}".programs = {
+    adobe.enable = mkDefault false;
 
-    opera.override { proprietaryCodecs = true; } = {
-      enable = true;
-      package = pkgs.opera
-      extensions = {
-      }; }; }; };
+    audacity.enable = mkDefault true;
 
+    blender.enable = mkDefault false;
 
+    davinci-resolve.enable =  mkDefault false;
+
+    gimp.enable = mkDefault true;
+
+    kdenlive.enable = mkDefault false;
+
+    obs.enable = mkDefault true;
+
+#   ..... CONFIG .....
+    options = {     # Defines new NixOS options. Call with config.<option>.enable =
+      content-creation.enable = lib.mkEnableOption "Enables media creation tools."; 
+      };
+
+    config = lib.mkIf config.content-creation.enable {
+      users."${user}".programs = {
+
+        opera.override { proprietaryCodecs = true; } = {
+          enable = true;
+          package = pkgs.opera
+          extensions = {
+          }; }; }; };
 
 }       # End of file.
