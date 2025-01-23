@@ -4,8 +4,10 @@
 #   ..... SUBMODULES .....
 imports = [
   ./boot.nix
-  ./drivers.nix
   ./daemons.nix
+  ./drivers.nix
+  ./login.nix
+  ./nvidia-drivers.nix
   ];
 
 #   ..... DEFAULT SETTINGS .....
@@ -16,5 +18,8 @@ imports = [
 
     drivers.enable = mkDefault true;
     nvidia-drivers.enable = mkDefault false;
+
+    login-session = "niri".
+    autologin = true;
 
 }   # End of file.

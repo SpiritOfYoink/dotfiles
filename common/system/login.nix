@@ -25,6 +25,10 @@ in {
             AutomaticLoginEnable = true;
             AutomaticLogin = "${user}";
             }; }; };
+
+    options.wayland.systemd.target = "niri-session.target" 
+
+
       };
 
 }   # End of file.

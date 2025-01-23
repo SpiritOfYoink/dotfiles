@@ -46,13 +46,19 @@
 
 
 
+     # Alias allowing the shell command 'rebuild' to do a full rebuild from github. Does this go inside or outside of home manager?
+    (writeShellScriptBin "rebuild.sh" ''
+      cd "/home/${dotfiles}"
+      sudo nixos-rebuild switch --upgrade --flake '${github}'
+      '')
 
 
 
 
 
-
-
+ environment.systemPackages = [
+    pkgs.home-manager
+  ];
 
 
       homeConfigurations = {      # These actually go in the user's dotfiles. 
