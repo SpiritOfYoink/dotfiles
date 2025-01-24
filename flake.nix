@@ -31,11 +31,6 @@
           };
 
       in rec {
-        packages = [
-          import ./pkgs { inherit pkgs; }
-          pkgs.home-manager
-          ];
-
 
 #   ..... CONFIG .....
 
@@ -47,8 +42,11 @@
     programs.gamemode.enable = true;    # TODO: See if this needs more setting up.
 
     nix = {
+      environment.systemPackages = with pkgs; [
+        git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
+        home-manager
+        ];
       settings.experimental-features = ["nix-command flakes"];   # Enables the Flakes update system command in conjunction with a rebuild.
-      environment.systemPackages = with pkgs; [ git ];    # Flakes clones its dependencies through the git command, so it must be at the top of the list.
       checkConfig = true;
       checkAllErrors = true;
       };
@@ -67,8 +65,8 @@
         LC_TIME = "en_US.UTF-8";
         };
 
-      # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-      system.stateVersion = "24.11";    # Did you read the comment?
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    system.stateVersion = "24.11";    # Did you read the comment?
 
 
 #   ..... USER SETUP .....

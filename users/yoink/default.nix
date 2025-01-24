@@ -54,6 +54,17 @@
 
 
 #   ..... HOME MANAGER .....
+
+users.users.${user}.isNormalUser = true;
+home-manager.users.${user} = { pkgs, ... }: {
+  home.packages = [
+     ];
+  programs.bash.enable = true;
+  home.stateVersion = "24.11"; # The state version is required, and should stay at the version you originally installed.
+};
+
+
+
  environment.systemPackages = [
     pkgs.home-manager
   ];
