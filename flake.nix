@@ -3,8 +3,19 @@
 #   ..... INPUTS .....
     inputs = {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";       # Nixpkgs.
-      home-manager.url = "github:nix-community/home-manager";    # Home manager.
-      home-manager.inputs.nixpkgs.follows = "nixpkgs";
+      home-manager = {
+        url = "github:nix-community/home-manager";    # Home manager.
+        inputs.nixpkgs.follows = "nixpkgs";
+        };
+      niri = {
+        url = "github:YaLTeR/niri/v25.01";
+        inputs.nixpkgs.follows = "nixpkgs"; 
+        };
+      xwayland-satellite-stable.url = "github:Supreeeme/xwayland-satellite/v0.5";# Allows Niri to hook into wayland.
+      niri-stable.flake = false;
+      xwayland-satellite-stable.flake = false;
+
+
     # wsl.url = "github:nix-community/NixOS-WSL";    # Used for Windows Subsystem for Linux compatibility
     # nix-colors.url = "github:misterio77/nix-colors";    # Nix colors.
       stylix = {
@@ -14,9 +25,6 @@
         };
     # sops-nix.url = "github:mic92/sops-nix";   # Secret provisioning for password security.
     # nix-gl.url = "github:nix-community/nixgl";    # Wrapper to fix launching openGL games.
-      niri-stable.url = "github:YaLTeR/niri/v25.01";    # Niri window manager.
-      niri-stable.inputs.nixpkgs.follows = "nixpkgs";
-    # xwayland-satellite-stable.url = "github:Supreeeme/xwayland-satellite/v0.5";   # Allows Niri to hook into wayland.
     };
 
 
@@ -31,6 +39,7 @@
           };
 
       in rec {
+
 
 #   ..... CONFIG .....
 
