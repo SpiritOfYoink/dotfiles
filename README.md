@@ -19,6 +19,13 @@
  
     ``` export NIX_CONFIG="experimental-features = nix-command flakes" ```
 
+* Step 4: Run:
+
+    ``` sudo nixos-install --flake github/spiritofyoink/dotfiles#<user> root /home/<user>/dotfiles ```
+
+
+
+
 
 * Step 4: Run:
 
