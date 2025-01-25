@@ -24,7 +24,7 @@
 
 #   ..... MODULE OPTIONS .....
 
-      nvidia-drivers.enable = true; 
+    nvidia-drivers.enable = true; 
 
 
 #   ..... NETWORKED STORAGE .....
@@ -86,5 +86,12 @@ home-manager.users.${user} = { pkgs, ... }: {
     programs.home-manager.enable = true;    # Let Home Manager install and manage itself.
 
     wallpaper = 
+
+
+
+#   ..... BOILERPLATE .....
+    environment.sessionVariables = {
+      NIX_PATH = "/home/dotfiles/${user}/default.nix";
+      };
 
 }   # End of file.
