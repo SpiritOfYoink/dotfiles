@@ -21,11 +21,11 @@
 
 * Step 4: Run, providing the root password when prompted. Replace ```<user>``` with the user you selected in step one. (yoink, dame, mac, or hamster)
 
-    ``` sudo mkdir -p -m 750 /home/<user>/dotfiles ```
+    ``` sudo mkdir -p -m 755 /home/<user>/dotfiles ```
 
 * Step 5: Run the following, replacing ```<user>``` with the user you selected in step one. (yoink, dame, mac, or hamster)
 
-    ``` sudo nixos-install --flake github/spiritofyoink/dotfiles#<user> -root /home/<user>/dotfiles ```
+    ``` sudo nixos-install --flake github/spiritofyoink/dotfiles#<user> --root /home/<user>/dotfiles ```
 
 
 * Step 6: Reboot. You should now be in NixOS.
