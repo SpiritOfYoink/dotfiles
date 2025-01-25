@@ -16,10 +16,10 @@ description = "Home Manager Configuration";
       };
 
 #   ..... OUTPUTS .....
-    outputs = { pkgs, nixpkgs, lib, ... }@inputs:{
+    outputs = { self, nixpkgs, lib, ... }@inputs:{
 
       nix = {
-        environment.systemPackages = with pkgs; [
+        environment.systemPackages = [
           git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
           home-manager
           ];
