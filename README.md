@@ -19,13 +19,13 @@
  
     ``` export NIX_CONFIG="experimental-features = nix-command flakes" ```
 
-* Step 4: Run, providing the root password when prompted. Replace ```<user>``` with the user you selected in step one. (yoink, dame, mac, or hamster)
+* Step 4: Run:
 
-    ``` sudo mkdir -p -m 755 /home/<user>/dotfiles ```
+    ```nix shell nixpkgs#git --command nix flake clone github:spiritofyoink/dotfiles --dest ~/dotfiles```
 
-* Step 5: Run the following, replacing ```<user>``` with the user you selected in step one. (yoink, dame, mac, or hamster)
+* Step 5: Run the following, replacing <user> with the user you selected in step one. (yoink, dame, mac, or hamster)
 
-    ``` sudo nixos-install --flake github/spiritofyoink/dotfiles/tree/main --root /home/<user>/dotfiles ```
+    ```nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake '/home/<user>/dotfiles#<user>'nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake /home/<user>/dotfiles#<user>```
 
 
 * Step 6: Reboot. You should now be in NixOS.
