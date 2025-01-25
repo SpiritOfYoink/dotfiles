@@ -25,7 +25,7 @@
 
 * Step 5: Run the following, replacing <user> with the user you selected in step one. (yoink, dame, mac, or hamster)
 
-    ```nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake '/home/<user>/dotfiles#<user>'nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake /home/<user>/dotfiles#<user>```
+    ```nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake /home/<user>/dotfiles#<user>```
 
 
 * Step 6: Reboot. You should now be in NixOS.
