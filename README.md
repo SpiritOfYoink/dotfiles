@@ -21,7 +21,7 @@
 
 * Step 4: Run:
 
-    ``` sudo nixos-install --flake github/spiritofyoink/dotfiles#<user> root /home/<user>/dotfiles ```
+    ``` sudo nixos-install --flake github/spiritofyoink/dotfiles#<user> -root /home/<user>/dotfiles ```
 
 
 
