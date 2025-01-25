@@ -7,6 +7,7 @@
 
     programs.steam = {   # Steam runs better if installed system-wide.
           enable = true;
+          gamescope.enable = true;
           pkgs.steam.override.withJava = true;    # Allows for Java games.
 
           remotePlay.openFirewall = true;   # Open ports in the firewall for Steam Remote Play.
@@ -14,11 +15,6 @@
           extest.enable = true;   # Translates X11 input events to uinput events. (For using Steam Input on Wayland.)
           extraPackages = with pkgs; [ gamescope ];   # Valve's microcompositor to allow games to run in an isolated enviroment.
           gamescopeSession.enable = true;
-          
-
-
           };
-
-      gamescope.enable = true;    # TODO: I don't know if I need this or if the extraPackages in steam is fine. 
 
 }   # End of file.

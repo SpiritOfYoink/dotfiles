@@ -75,52 +75,12 @@
   #   ..... HOST SETUPS .....
 
       nixosConfigurations = {
-
-
-        }; 
-
-
-
-      homeConfigurations = {      # These actually go in the user's dotfiles. 
-
-        yoink = home-manager.lib.homeManagerConfiguration {   # THE SPIRIT OF YOINK
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+         yoink = nixpkgs.lib.nixosSystem {   # THE SPIRIT OF YOINK
           specialArgs = { inherit inputs; };   # Allows modules access to flake inputs.
           extraSpecialArgs = { inherit inputs; };   # Allows home-manager modules access to flake inputs.
           config = { allowUnfree = true; };
           modules = [ ./users/yoink ];
-          };
+      };      
 
-  #     dame = nixpkgs.lib.nixosSystem rec {    # NO AIM DAME
-  #        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-  #      specialArgs = { inherit inputs outputs; };   # Allows modules access to flake inputs.
-  #        extraSpecialArgs = { inherit inputs outputs; };   # Allows home-manager modules access to flake inputs.
-  #        config = { allowUnfree = true; };
-  #         modules = [ ./hosts/dame/configuration.nix ./home-manager ];
-  #         };
-
-  #    mac = nixpkgs.lib.nixosSystem rec {   # MAC'N'CHEESE
-  #        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-  #        specialArgs = { inherit inputs outputs; };   # Allows modules access to flake inputs.
-  #        extraSpecialArgs = { inherit inputs outputs; };   # Allows home-manager modules access to flake inputs.
-  #        config = { allowUnfree = true; };
-  #         modules = [ ./hosts/mac/configuration.nix ./home-manager ];
-  #         };
-
-  #     hamster = nixpkgs.lib.nixosSystem rec {    # HAMSTER
-  #        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-  #        specialArgs = { inherit inputs outputs; };   # Allows modules access to flake inputs.
-  #        extraSpecialArgs = { inherit inputs outputs; };   # Allows home-manager modules access to flake inputs.
-  #        config = { allowUnfree = true; };
-  #         modules = [ ./hosts/hamster/configuration.nix ./home-manager ];
-  #         };
-
-  #     server = nixpkgs.lib.nixosSystem rec {    # SERVER
-  #        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-  #        specialArgs = { inherit inputs outputs; };   # Allows modules access to flake inputs.
-  #        extraSpecialArgs = { inherit inputs outputs; };   # Allows home-manager modules access to flake inputs.
-  #        config = { allowUnfree = true; };
-  #         modules = [ ./hosts/server/configuration.nix ./home-manager ];
-  #         };
 
         }; }; }   # End of file.

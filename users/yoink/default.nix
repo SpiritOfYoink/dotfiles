@@ -49,6 +49,7 @@
 
 #   ..... HOME MANAGER .....
 
+
 #   ..... USER SETUP .....
 
     networking.hostName = "${host}";    # What the computer is called on your network.
@@ -70,17 +71,25 @@
 
 users.users.${user}.isNormalUser = true;
 home-manager.users.${user} = { pkgs, ... }: {
+
+
+
+
+  environment.systemPackages = [
+      pkgs.home-manager
+      ];
   home.packages = [
+    protonup
      ];
   programs.bash.enable = true;
   home.stateVersion = "24.11"; # The state version is required, and should stay at the version you originally installed.
-};
+  };
+
+  home.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
+    };
 
 
-
- environment.systemPackages = [
-    pkgs.home-manager
-  ];
 
           yoink = home-manager.lib.homeManagerConfiguration {   # THE SPIRIT OF YOINK
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
