@@ -72,15 +72,15 @@
     system.stateVersion = "24.11";    # Did you read the comment?
 
 
-  #   ..... HOST SETUPS .....
+#   ..... HOST SETUPS .....
 
-      nixosConfigurations = {
-         yoink = nixpkgs.lib.nixosSystem {   # THE SPIRIT OF YOINK
-          specialArgs = { inherit inputs; };   # Allows modules access to flake inputs.
-          extraSpecialArgs = { inherit inputs; };   # Allows home-manager modules access to flake inputs.
-          config = { allowUnfree = true; };
-          modules = [ ./users/yoink ];
-      };      
+    nixosConfigurations = {
+        yoink = nixpkgs.lib.nixosSystem {   # THE SPIRIT OF YOINK
+        specialArgs = { inherit inputs; };   # Allows modules access to flake inputs.
+        extraSpecialArgs = { inherit inputs; };   # Allows home-manager modules access to flake inputs.
+        config = { allowUnfree = true; };
+        modules = [ ./users/yoink ];
+        };      
 
 
         }; }; }   # End of file.
