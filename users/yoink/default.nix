@@ -84,8 +84,8 @@ home-manager.users.${user} = { pkgs, ... }: {
 
           yoink = home-manager.lib.homeManagerConfiguration {   # THE SPIRIT OF YOINK
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          specialArgs = { inherit inputs outputs; };   # Allows modules access to flake inputs.
-          extraSpecialArgs = { inherit inputs outputs; };   # Allows home-manager modules access to flake inputs.
+          specialArgs = { inherit inputs; };   # Allows modules access to flake inputs.
+          extraSpecialArgs = { inherit inputs; };   # Allows home-manager modules access to flake inputs.
           config = { allowUnfree = true; };
           modules = [ ./users/yoink ];
           };
@@ -93,8 +93,8 @@ home-manager.users.${user} = { pkgs, ... }: {
 
       homeConfigurations.home-manager.lib.homeManagerConfiguration {   # THE SPIRIT OF YOINK
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          specialArgs = { inherit inputs outputs; };   # Allows modules access to flake inputs.
-          extraSpecialArgs = { inherit inputs outputs; };   # Allows home-manager modules access to flake inputs.
+          specialArgs = { inherit inputs; };   # Allows modules access to flake inputs.
+          extraSpecialArgs = { inherit inputs; };   # Allows home-manager modules access to flake inputs.
           config = { allowUnfree = true; };
           modules = [ ./users/yoink ];
           };
