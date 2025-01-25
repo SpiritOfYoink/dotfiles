@@ -47,12 +47,45 @@
             ]; };
 
 
+#   ..... SYSTEM .....
+
+      let
+        system = "x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+
+      environment.systemPackages = with pkgs; [
+        git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
+        home-manager
+        ];
+
+      nix.settings.experimental-features = ["nix-command" "flakes"];   # Enables the Flakes update system command in conjunction with a rebuild.
+      nix.checkConfig = true;
+      nix.checkAllErrors = true;
+
+      time.timeZone = "America/Los_Angeles";      # Sets your time zone.
+      i18n.defaultLocale = "en_US.UTF-8";     # Selects internationalisation properties.
+      i18n.extraLocaleSettings = {
+          LC_ADDRESS = "en_US.UTF-8";
+          LC_IDENTIFICATION = "en_US.UTF-8";
+          LC_MEASUREMENT = "en_US.UTF-8";
+          LC_MONETARY = "en_US.UTF-8";
+          LC_NAME = "en_US.UTF-8";
+          LC_NUMERIC = "en_US.UTF-8";
+          LC_PAPER = "en_US.UTF-8";
+          LC_TELEPHONE = "en_US.UTF-8";
+          LC_TIME = "en_US.UTF-8";
+          };
+
+      # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+      system.stateVersion = "24.11";    # Did you read the comment?
+
+      networking.hostName = "${host}";    # What the computer is called on your network.
+
 #   ..... HOME MANAGER .....
 
 
-#   ..... USER SETUP .....
 
-    networking.hostName = "${host}";    # What the computer is called on your network.
 
     users.users."${user}" = {   # Defines the user account.
         isNormalUser = true;

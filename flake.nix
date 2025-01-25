@@ -28,8 +28,8 @@ description = "Home Manager Configuration";
         ];
 
       nix.settings.experimental-features = ["nix-command" "flakes"];   # Enables the Flakes update system command in conjunction with a rebuild.
-      checkConfig = true;
-      checkAllErrors = true;
+      nix.checkConfig = true;
+      nix.checkAllErrors = true;
 
       time.timeZone = "America/Los_Angeles";      # Sets your time zone.
       i18n.defaultLocale = "en_US.UTF-8";     # Selects internationalisation properties.
