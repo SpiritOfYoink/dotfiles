@@ -27,15 +27,6 @@
 
 #   ..... OUTPUTS .....
     outputs = {self, nixpkgs, home-manager, niri, ... }@inputs:
-      let
-        system = "x86_64-linux";
-        pkgs = import nixpkgs {
-          inherit system;
-          config = {allowUnfree = true; };
-          };
-
-      in rec {
-
 
 #   ..... SYSTEM .....
 
