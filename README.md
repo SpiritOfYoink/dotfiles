@@ -21,8 +21,8 @@
 
 
 * Step 4: Run:
- 
-    ``` nix shell nixpkgs#git --command nix flake clone github:spiritofyoink/dotfiles --dest ~/dotfiles ```
+
+    ``` nix build --out-link nix "github:spiritofyoink/dotfiles" --dest ~/dotfiles ```
 
 * Step 5: Run the following, replacing ```<user>``` with the user you selected in step one. (yoink, dame, mac, or hamster)
  
