@@ -16,7 +16,7 @@ description = "Home Manager Configuration";
       };
 
 #   ..... OUTPUTS .....
-    outputs = { nixpkgs, lib, ... }@inputs:{
+    outputs = { pkgs, nixpkgs, lib, ... }@inputs:{
 
       nix = {
         environment.systemPackages = with pkgs; [
