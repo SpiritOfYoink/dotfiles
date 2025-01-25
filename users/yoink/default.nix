@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: with lib;
+{ pkgs, lib, config, inputs, ... }: with lib;
 
   let
     user = "yoink";   # What's your login?
