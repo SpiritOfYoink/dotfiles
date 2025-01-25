@@ -18,9 +18,6 @@ description = "Home Manager Configuration";
 #   ..... OUTPUTS .....
     outputs = { nixpkgs, lib, ... }@inputs:
 
-      nixpkgs.config.allowUnfree = true;
-      programs.gamemode.enable = true;    # TODO: See if this needs more setting up.
-
       nix = {
         environment.systemPackages = with pkgs; [
           git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
