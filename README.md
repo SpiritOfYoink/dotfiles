@@ -28,10 +28,6 @@
  
      ``` nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake /home/<user>/dotfiles#<user> ```
 
-> [!IMPORTANT]
-> Don't forget the closing apostrphe!
-
-
 * Step 6: Reboot. You should now be in NixOS.
 
 
