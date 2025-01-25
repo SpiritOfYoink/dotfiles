@@ -16,7 +16,7 @@ description = "Home Manager Configuration";
       };
 
 #   ..... OUTPUTS .....
-    outputs = { self, nixpkgs, lib, ... } @inputs:
+    outputs = { self, nixpkgs, ... } @inputs:
       let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
