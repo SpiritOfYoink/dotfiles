@@ -24,13 +24,7 @@
  
     ``` nix shell nixpkgs#git --command nix flake clone github:spiritofyoink/dotfiles --dest ~/dotfiles ```
 
-
-* Step 5: Run:
- 
-     ``` sudo mv /etc/nixos/hardware-configuration.nix /home/<host>/dotfiles/hosts/<host>/hardware-configuration.nix ```
-
-
-* Step 6: Run the following, replacing ```<user>``` with the user you selected in step one. (yoink, dame, mac, or hamster)
+* Step 5: Run the following, replacing ```<user>``` with the user you selected in step one. (yoink, dame, mac, or hamster)
  
      ``` nix shell nixpkgs#git --command sudo nixos-rebuild boot --flake '/home/<user>/dotfiles#<user>' ```
 
@@ -38,7 +32,7 @@
 > Don't forget the closing apostrphe!
 
 
-* Step 7: Reboot. You should now be in NixOS.
+* Step 6: Reboot. You should now be in NixOS.
 
 
 > [!NOTE]
