@@ -1,4 +1,5 @@
-{  description = "Home Manager Configuration";
+{
+description = "Home Manager Configuration";
 
 #   ..... INPUTS .....
     inputs = {
@@ -15,7 +16,7 @@
       };
 
 #   ..... OUTPUTS .....
-    outputs = { lib, ... }@inputs: let
+    outputs = { nixpkgs, lib, ... }@inputs:
 
       nixpkgs.config.allowUnfree = true;
       programs.gamemode.enable = true;    # TODO: See if this needs more setting up.
