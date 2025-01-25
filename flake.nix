@@ -12,9 +12,6 @@
         inputs.nixpkgs.follows = "nixpkgs"; 
         };
       xwayland-satellite-stable.url = "github:Supreeeme/xwayland-satellite/v0.5";# Allows Niri to hook into wayland.
-      niri-stable.flake = false;
-      xwayland-satellite-stable.flake = false;
-
 
     # wsl.url = "github:nix-community/NixOS-WSL";    # Used for Windows Subsystem for Linux compatibility
     # nix-colors.url = "github:misterio77/nix-colors";    # Nix colors.
