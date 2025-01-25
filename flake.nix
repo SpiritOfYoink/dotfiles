@@ -26,7 +26,7 @@
 
 
 #   ..... OUTPUTS .....
-    outputs = {self, nixpkgs, home-manager, niri, ... }@inputs:
+    outputs = {self, nixpkgs, home-manager, niri, ... }@inputs: with lib;
       let
         inherit (home-manager.lib) homeManagerConfiguration;
         system = "x86_64-linux";
