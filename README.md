@@ -25,7 +25,7 @@
 
 * Step 5: Run the following, replacing ```<user>``` with the user you selected in step one. (yoink, dame, mac, or hamster)
 
-    ``` sudo nixos-install --flake github/spiritofyoink/dotfiles#<user> --root /home/<user>/dotfiles ```
+    ``` sudo nixos-install --flake github/spiritofyoink/dotfiles/tree/main --root /home/<user>/dotfiles ```
 
 
 * Step 6: Reboot. You should now be in NixOS.
