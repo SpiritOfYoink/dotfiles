@@ -12,17 +12,17 @@ description = "Home Manager Configuration";
         url = "github:YaLTeR/niri/v25.01";
         inputs.nixpkgs.follows = "nixpkgs"; 
         };
-      xwayland-satellite-stable.url = "github:Supreeeme/xwayland-satellite/v0.5";# Allows Niri to hook into wayland.
+      xwayland-satellite-stable.url = "github:Supreeeme/xwayland-satellite/v0.5";   # Allows Niri to hook into wayland.
       };
 
 #   ..... OUTPUTS .....
-    outputs = { self, nixpkgs, lib, ... }@inputs:{
+    outputs = { self, nixpkgs, lib, ... }@inputs: {
 
       environment.systemPackages = with pkgs [
         git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
         home-manager
         ];
-
+      settings.experimental-features = ["nix-command flakes"];   # Enables the Flakes update system command in conjunction with a rebuild.
       checkConfig = true;
       checkAllErrors = true;
 
@@ -52,7 +52,6 @@ description = "Home Manager Configuration";
         extraSpecialArgs = { inherit inputs; };   # Allows home-manager modules access to flake inputs.
         config = { allowUnfree = true; };
         modules = [ ./users/yoink ];
-        };      
-
-
-        }; }; }   # End of file.
+        }; }; };
+        
+}   # End of file.
