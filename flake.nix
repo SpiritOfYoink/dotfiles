@@ -26,10 +26,9 @@
 
 
 #   ..... OUTPUTS .....
-    outputs = {self, nixpkgs, home-manager, niri, ... }@inputs:
+    outputs = {self, nixpkgs, home-manager, niri, ... }@inputs: with lib;
 
 #   ..... SYSTEM .....
-
 
     nixpkgs.config.allowUnfree = true;
     programs.gamemode.enable = true;    # TODO: See if this needs more setting up.
