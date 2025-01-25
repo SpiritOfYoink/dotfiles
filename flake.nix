@@ -26,9 +26,8 @@
 
 
 #   ..... OUTPUTS .....
-    outputs = {self, nixpkgs, home-manager, niri, ... }@inputs: with lib;
+    outputs = {self, nixpkgs, home-manager, niri, ... }@inputs:
       let
-        inherit (home-manager.lib) homeManagerConfiguration;
         system = "x86_64-linux";
         pkgs = import nixpkgs {
           inherit system;
@@ -75,7 +74,7 @@
 #   ..... HOST SETUPS .....
 
     nixosConfigurations = {
-        yoink = lib.nixpkgs.nixosSystem {   # THE SPIRIT OF YOINK
+        yoink = nixpkgs.lib.nixosSystem {   # THE SPIRIT OF YOINK
         specialArgs = { inherit inputs; };   # Allows modules access to flake inputs.
         extraSpecialArgs = { inherit inputs; };   # Allows home-manager modules access to flake inputs.
         config = { allowUnfree = true; };
