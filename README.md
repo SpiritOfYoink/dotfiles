@@ -42,7 +42,7 @@
 
 
 > [!NOTE]
-> From now on, you simply need to use 'rebuild' to rebuild and switch the system configuration.
+> From now on, you simply need to use 'rebuild' to rebuild and switch the system configuration. This currently doesn't work.
 
 
 If you're debugging, include the following lines in /etc/nixos/configuration.nix
