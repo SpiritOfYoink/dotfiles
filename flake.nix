@@ -19,9 +19,10 @@ description = "Home Manager Configuration";
     outputs = { self, nixpkgs, lib, ... }@inputs: {
 
       environment.systemPackages = with pkgs [
-        git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
-        home-manager
+        git;   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
+        home-manager;
         ];
+
       nix.settings.experimental-features = ["nix-command" "flakes"];   # Enables the Flakes update system command in conjunction with a rebuild.
       checkConfig = true;
       checkAllErrors = true;
@@ -47,11 +48,20 @@ description = "Home Manager Configuration";
 #   ..... HOST SETUPS .....
 
     nixosConfigurations = {
+
         yoink = nixpkgs.lib.nixosSystem {   # THE SPIRIT OF YOINK
-        specialArgs = { inherit inputs; };   # Allows modules access to flake inputs.
-        extraSpecialArgs = { inherit inputs; };   # Allows home-manager modules access to flake inputs.
-        config = { allowUnfree = true; };
-        modules = [ ./users/yoink ];
-        }; }; };
+          specialArgs = { inherit inputs; };   # Allows modules access to flake inputs.
+          config = { allowUnfree = true; };
+          modules = [
+            ./users/yoink 
+            home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.yoink = import ./users/yoink/default.nix;
+            } ];
+          }; };
+        
+        
+        };
         
 }   # End of file.
