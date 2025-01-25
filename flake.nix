@@ -18,15 +18,13 @@ description = "Home Manager Configuration";
 #   ..... OUTPUTS .....
     outputs = { self, nixpkgs, lib, ... }@inputs:{
 
-      nix = {
-        environment.systemPackages = [
-          git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
-          home-manager
-          ];
-        settings.experimental-features = ["nix-command flakes"];   # Enables the Flakes update system command in conjunction with a rebuild.
-        checkConfig = true;
-        checkAllErrors = true;
-        };
+      environment.systemPackages = [
+        git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
+        home-manager
+        ];
+      settings.experimental-features = ["nix-command flakes"];   # Enables the Flakes update system command in conjunction with a rebuild.
+      checkConfig = true;
+      checkAllErrors = true;
 
       time.timeZone = "America/Los_Angeles";      # Sets your time zone.
       i18n.defaultLocale = "en_US.UTF-8";     # Selects internationalisation properties.
