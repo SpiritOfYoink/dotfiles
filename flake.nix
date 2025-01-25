@@ -75,23 +75,6 @@
     system.stateVersion = "24.11";    # Did you read the comment?
 
 
-#   ..... USER SETUP .....
-
-    networking.hostName = "${host}";    # What the computer is called on your network.
-
-    users.users."${user}" = {   # Defines the user account.
-        isNormalUser = true;
-        description = "${fullname}";
-        extraGroups = [ "wheel"  "networkmanager"];
-        initialPassword = "correcthorsebatterystaple";    # TODO: Be sure to change this to the secrets below, when you get that set up.
-
-    #users.users."${user}"".HashedPassword = mkOption { "/home/${user}/hosts/${user}/secrets/user-secrets" };   # This is the user's password.
-    #users.users."root".HashedPassword = mkOption { "/home/${user}/hosts/${user}/secrets/root-secrets"; };   # This is the root user's password.
-
-    users.mutableUsers = false;   # Users and passwords cannot be changed ourside of this file.
-    };
-
-
   #   ..... HOST SETUPS .....
 
       nixosConfigurations = {
