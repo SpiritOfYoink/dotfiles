@@ -16,7 +16,11 @@ description = "Home Manager Configuration";
       };
 
 #   ..... OUTPUTS .....
-    outputs = { self, nixpkgs, lib, ... }@inputs: {
+    outputs = { self, nixpkgs, lib, ... } @inputs: {
+      let
+        system = "x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
 
       environment.systemPackages = with pkgs [
         git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
@@ -62,6 +66,6 @@ description = "Home Manager Configuration";
           }; };
         
         
-        };
+        }; };
         
 }   # End of file.
