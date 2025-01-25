@@ -16,7 +16,7 @@ description = "Home Manager Configuration";
       };
 
 #   ..... OUTPUTS .....
-    outputs = { self, nixpkgs, lib, ... } @inputs: {
+    outputs = { self, nixpkgs, lib, ... } @inputs:
       let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
@@ -62,10 +62,10 @@ description = "Home Manager Configuration";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.yoink = import ./users/yoink/default.nix;
-            } ];
+            } ]; }; 
+          
+          
+          
           }; };
-        
-        
-        }; };
         
 }   # End of file.
