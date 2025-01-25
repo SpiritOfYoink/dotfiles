@@ -19,8 +19,8 @@ description = "Home Manager Configuration";
     outputs = { self, nixpkgs, lib, ... }@inputs: {
 
       environment.systemPackages = with pkgs [
-        git;   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
-        home-manager;
+        git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
+        home-manager
         ];
 
       nix.settings.experimental-features = ["nix-command" "flakes"];   # Enables the Flakes update system command in conjunction with a rebuild.
