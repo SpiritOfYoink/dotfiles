@@ -75,7 +75,7 @@
 #   ..... HOST SETUPS .....
 
     nixosConfigurations = {
-        yoink = nixpkgs.lib.nixosSystem {   # THE SPIRIT OF YOINK
+        yoink = lib.nixpkgs.nixosSystem {   # THE SPIRIT OF YOINK
         specialArgs = { inherit inputs; };   # Allows modules access to flake inputs.
         extraSpecialArgs = { inherit inputs; };   # Allows home-manager modules access to flake inputs.
         config = { allowUnfree = true; };
