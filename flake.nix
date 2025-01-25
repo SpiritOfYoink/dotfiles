@@ -22,7 +22,7 @@ description = "Home Manager Configuration";
         git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
         home-manager
         ];
-      settings.experimental-features = ["nix-command flakes"];   # Enables the Flakes update system command in conjunction with a rebuild.
+
       checkConfig = true;
       checkAllErrors = true;
 
