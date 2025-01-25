@@ -24,13 +24,7 @@
 
 #   ..... MODULE OPTIONS .....
 
-    nvidia-drivers = true; 
-    system.enable = true;
-    home-manager.enable = false;
-    #desktopapps.enable = true;
-    #office.enable = true;
-    #photoshop.enable = true;
-    #games.enable = true;
+      nvidia-drivers.enable = true; 
 
 
 #   ..... NETWORKED STORAGE .....

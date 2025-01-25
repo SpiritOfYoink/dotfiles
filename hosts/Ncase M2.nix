@@ -2,7 +2,8 @@
 
 #   ..... SUBMODULES .....
 imports = [
-  ../common/system/
+  ./common/system/
+  ./common/gui/
   ];
 
 #   ..... DEFAULT SETTINGS .....

@@ -41,7 +41,7 @@
       in rec {
 
 
-#   ..... CONFIG .....
+#   ..... SYSTEM .....
 
     environment.sessionVariables = {
       NIX_PATH = "/home/dotfiles/${user}/configuration.nix";

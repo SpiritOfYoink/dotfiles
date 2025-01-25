@@ -12,7 +12,7 @@ imports = [
   ];
 
 #   ..... DEFAULT SETTINGS .....
-
+    config =  {};
     content-creation.enable =  mkDefault true;
 
     gaming.enable = mkDefault true;
