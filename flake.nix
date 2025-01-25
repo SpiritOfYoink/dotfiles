@@ -58,11 +58,7 @@ description = "Home Manager Configuration";
           config = { allowUnfree = true; };
           modules = [
             ./users/yoink 
-            home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.yoink = import ./users/yoink/default.nix;
-            } ]; }; 
+            ]; }; 
           
           }; };
         
