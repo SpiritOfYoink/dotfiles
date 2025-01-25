@@ -17,7 +17,7 @@
 
 #   ..... SUBMODULES .....
     imports = [   # You can import other NixOS modules here.
-      ./hardware-configuration.nix
+      etc/nixos/hardware-configuration.nix
       ../hosts/$<host>.nix
       ];
 
@@ -118,8 +118,6 @@ home-manager.users.${user} = { pkgs, ... }: {
 
 
 #   ..... BOILERPLATE .....
-    environment.sessionVariables = {
-      NIX_PATH = "/home/dotfiles/${user}/default.nix";
-      };
+
 
 }   # End of file.
