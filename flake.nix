@@ -22,7 +22,7 @@ description = "Home Manager Configuration";
         pkgs = nixpkgs.legacyPackages.${system};
       in {
 
-      environment.systemPackages = with pkgs: [
+      environment.systemPackages = with pkgs; [
         git   # Flakes clones its dependencies through the git command, so it must be at the top of the list.
         home-manager
         ];
